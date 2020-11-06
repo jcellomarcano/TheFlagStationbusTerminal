@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TheFalgBusStop</string>
+    <string name="error_no_available_data">Datos no disponibles de momento</string>
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/routeList">
+    <fragment
+        android:id="@+id/chofersFragment"
+        android:name="com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListFragment"
+        android:label="chofers_fragment"
+        tools:layout="@layout/chofers_fragment">
+        <action
+            android:id="@+id/action_chofersFragment_to_hoursFragment"
+            app:destination="@id/hoursFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hoursFragment"
+        android:name="com.example.thefalgbusstop.presentation.Fragments.Hours.HoursFragment"
+        android:label="hours_fragment"
+        tools:layout="@layout/hours_fragment">
+        <action
+            android:id="@+id/action_hoursFragment_to_busesFragment"
+            app:destination="@id/busesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/busesFragment"
+        android:name="com.example.thefalgbusstop.presentation.Fragments.Buses.BusesFragment"
+        android:label="buses_fragment"
+        tools:layout="@layout/buses_fragment">
+        <action
+            android:id="@+id/action_busesFragment_to_passengersFragment"
+            app:destination="@id/passengersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passengersFragment"
+        android:name="com.example.thefalgbusstop.presentation.Fragments.Passengers.PassengersFragment"
+        android:label="passengers_fragment"
+        tools:layout="@layout/passengers_fragment" />
+    <fragment
+        android:id="@+id/routeList"
+        android:name="com.example.thefalgbusstop.presentation.Fragments.Routes.RouteList"
+        android:label="route_list_fragment"
+        tools:layout="@layout/route_list_fragment">
+        <action
+            android:id="@+id/action_routeList_to_chofersFragment"
+            app:destination="@id/chofersFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/routeList"
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        android:title="Rutas" />
+    <item
+        android:id="@+id/chofersFragment"
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Choferes" />
+    <item
+        android:id="@+id/hoursFragment"
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:icon="@android:drawable/ic_menu_month"
+        android:title="Horarios" />
+    <item
+        android:id="@+id/busesFragment"
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:icon="@android:drawable/ic_lock_idle_charging"
+        android:title="Buses" />
+    <item
+        android:id="@+id/passengersFragment"
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Pasajeros" />
+</menu>
