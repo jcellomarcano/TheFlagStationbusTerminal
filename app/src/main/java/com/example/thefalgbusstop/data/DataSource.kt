@@ -9,27 +9,27 @@ import io.reactivex.Single
 
 interface RemoteChoferDataSource {
     fun getAllChofers(): Single<List<Chofer>>
-    fun getChofer(choferId: Int): Single<Chofer>
+    fun getChoferRepo(id: Int): Single<Chofer>
 }
 interface RemoteBusDataSource {
     fun getAllBus(): Single<List<Bus>>
-    fun getBus(busId: Int): Single<Bus>
+//    fun getBus(busId: Int): Single<Bus>
 }
 interface RemoteSitDataSource {
     fun getAllSit(): Single<List<Sit>>
-    fun getSit(sitId: Int): Single<Sit>
+//    fun getSit(sitId: Int): Single<Sit>
 }
 interface RemotePassengerDataSource {
     fun getAllPassenger(): Single<List<Passenger>>
-    fun getPassenger(passengerId: Int): Single<Passenger>
+//    fun getPassenger(passengerId: Int): Single<Passenger>
 }
 interface RemoteRouteDataSource {
     fun getAllRoutes(): Single<List<Route>>
-    fun getRoute(routeId: Int): Single<Route>
+//    fun getRoute(routeId: Int): Single<Route>
 }
 interface RemoteHorariosDataSource {
     fun getAllHorarios(): Single<List<Horarios>>
-    fun getHorarios(horariosId: Int): Single<Horarios>
+//    fun getHorarios(horariosId: Int): Single<Horarios>
 }
 
 interface LocalChoferDataSource {
@@ -40,3 +40,29 @@ interface LocalChoferDataSource {
 
     fun updateFavoriteChoferStatus(chofer: Chofer): Maybe<Boolean>
 }
+interface LocalBusDataSource {
+
+    fun getBus(BusId: Int): String
+
+}
+interface LocalPassengerDataSource {
+
+    fun getPassenger(PassengerId: Int): String
+
+}
+interface LocalRouteDataSource {
+
+    fun getRoute(RouteId: Int): String
+
+}
+interface LocalSitDataSource {
+
+    fun getSit(SitId: Int): String
+
+}
+interface LocalHorariosDataSource {
+
+    fun getHorarios(HorariosId: Int): String
+
+}
+

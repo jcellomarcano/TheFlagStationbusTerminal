@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 
 @Database(entities = [ChoferEntity::class], version = 1)
 @TypeConverters(ListStringConverters::class)
-abstract class ChoferDatabase : RoomDatabase() {
+abstract class AgencyDatabase : RoomDatabase() {
 
     //region Abstract Methods
 
@@ -23,9 +23,9 @@ abstract class ChoferDatabase : RoomDatabase() {
         private const val DATABASE_NAME = "the_flag_agency_db"
 
         @Synchronized
-        fun getDatabase(context: Context): ChoferDatabase = Room.databaseBuilder(
+        fun getDatabase(context: Context): AgencyDatabase = Room.databaseBuilder(
             context.applicationContext,
-            ChoferDatabase::class.java,
+            AgencyDatabase::class.java,
             DATABASE_NAME
         ).build()
     }

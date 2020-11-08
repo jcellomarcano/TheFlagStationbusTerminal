@@ -4,7 +4,7 @@ import com.example.thefalgbusstop.domain.Chofer
 import io.reactivex.Maybe
 
 class ChoferRoomDataSource(
-    database: ChoferDatabase
+    database: AgencyDatabase
 ): LocalChoferDataSource {
 
     private val choferDao by lazy { database.choferDao() }

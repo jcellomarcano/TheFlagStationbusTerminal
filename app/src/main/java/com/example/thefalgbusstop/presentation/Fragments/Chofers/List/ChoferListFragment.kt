@@ -25,14 +25,14 @@ import com.example.thefalgbusstop.databinding.ChofersFragmentBinding
 import com.example.thefalgbusstop.domain.Chofer
 import com.example.thefalgbusstop.domain.GetAllChofersUseCase
 import  com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
-import com.example.thefalgbusstop.presentation.Adapters.ChoferListAdapter
+import com.example.thefalgbusstop.presentation.Adapters.RecyclerListAdapter
 import kotlinx.android.synthetic.main.chofers_fragment.*
 
 //import kotlinx.android.synthetic.main.chofers_fragment.*
 
 class ChoferListFragment : Fragment() {
 
-    private lateinit var choferListAdapter: ChoferListAdapter
+    private lateinit var recyclerListAdapter: RecyclerListAdapter
     private lateinit var listener: OnChoferListFragmentListener
 
 //region Companion object
@@ -74,7 +74,7 @@ class ChoferListFragment : Fragment() {
 
     // principal fun for data sources
     private val localChoferDataSource: LocalChoferDataSource by lazy {
-        ChoferRoomDataSource(ChoferDatabase.getDatabase(requireActivity().applicationContext))
+        ChoferRoomDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
     }
 
     private val choferRequest: ChoferRequest by lazy {
@@ -124,22 +124,21 @@ class ChoferListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        choferListAdapter = ChoferListAdapter { Chofer ->
+        recyclerListAdapter = RecyclerListAdapter { Chofer ->
             listener.openChoferDetail(Chofer)
         }
-        choferListAdapter.setHasStableIds(true)
+        recyclerListAdapter.setHasStableIds(true)
 
         rvChoferList.run {
             addOnScrollListener(onScrollListener)
             setItemDecorationSpacing(resources.getDimension(R.dimen.list_item_padding))
-            adapter = choferListAdapter
+            adapter = recyclerListAdapter
         }
 
         srwChoferList.setOnRefreshListener {
             choferListViewModel.onRetryGetAllChofer(rvChoferList.adapter?.itemCount ?: 0)
         }
 
-//        choferListViewModel.ChoferList.observe(this, Observer(ChoferListViewModel::onChoferList))
         choferListViewModel.events.observe(viewLifecycleOwner, Observer(this::validateEvents))
 
         choferListViewModel.onGetAllChofers()
@@ -153,7 +152,7 @@ class ChoferListFragment : Fragment() {
                     Log.i("TAG", "validateEvents: ${error.message}")
                 }
                 is ShowChoferList -> navigation.run {
-                    choferListAdapter.addData(choferList)
+                    recyclerListAdapter.addData(choferList)
                 }
                 HideLoading -> {
                     srwChoferList.isRefreshing = false

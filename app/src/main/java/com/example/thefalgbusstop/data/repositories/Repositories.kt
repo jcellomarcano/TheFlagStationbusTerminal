@@ -1,12 +1,7 @@
 package com.example.thefalgbusstop.data.repositories
 
-import com.example.thefalgbusstop.data.ChoferEntity
-import com.example.thefalgbusstop.data.LocalChoferDataSource
-import com.example.thefalgbusstop.data.RemoteBusDataSource
-import com.example.thefalgbusstop.data.RemoteChoferDataSource
-import com.example.thefalgbusstop.domain.Bus
-import com.example.thefalgbusstop.domain.Chofer
-import com.example.thefalgbusstop.domain.Sit
+import com.example.thefalgbusstop.data.*
+import com.example.thefalgbusstop.domain.*
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
@@ -21,8 +16,11 @@ class ChoferRepository(
     fun getAllChofers(): Single<List<Chofer>> =
         remoteChoferDataSource.getAllChofers()
 
-    fun getChofer(choferId: Int): Single<Chofer> =
-        remoteChoferDataSource.getChofer(choferId)
+    fun getChofer(choferId: Int): String =
+        localChoferDataSource.getChofer(choferId)
+
+    fun getChoferRepo(choferId: Int): Single<Chofer> =
+        remoteChoferDataSource.getChoferRepo(choferId)
 
     fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean> =
         localChoferDataSource.getFavoriteChoferStatus(choferId)
@@ -34,7 +32,7 @@ class ChoferRepository(
 }
 class BusRepository(
     private val remoteBusDataSource: RemoteBusDataSource,
-//    private val localBusDataSource: LocalBusDataSource
+    private val localBusDataSource: LocalBusDataSource
 ) {
 
     //region Public Methods
@@ -42,107 +40,88 @@ class BusRepository(
     fun getAllBus(): Single<List<Bus>> =
         remoteBusDataSource.getAllBus()
 
-    fun getChofer(busId: Int): Single<Bus> =
-        remoteBusDataSource.getBus(busId)
+    fun getChofer(busId: Int): String =
+        localBusDataSource.getBus(busId)
 
     //endregion
 }
 
 class SitRepository(
     private val remoteSitDataSource: RemoteSitDataSource,
-//    private val localSitDataSource: LocalSitDataSource
+    private val localSitDataSource: LocalSitDataSource
 ) {
 
     //region Public Methods
 
     fun getAllSit(): Single<List<Sit>> =
-        remoteSitDataSource.getAllChofers()
+        remoteSitDataSource.getAllSit()
 
-    fun getSit(sitId: Int): Single<Sit> =
-        remoteSitDataSource.getChofer(sitId)
+    fun getSit(sitId: Int): String =
+        localSitDataSource.getSit(sitId)
 
 
     //endregion
 }
 
-class ChoferRepository(
-    private val remoteChoferDataSource: RemoteChoferDataSource,
-//    private val localChoferDataSource: LocalChoferDataSource
+class PassengerRepository(
+    private val remotePassengerDataSource: RemotePassengerDataSource,
+    private val localPassengerDataSource: LocalPassengerDataSource
 ) {
 
     //region Public Methods
 
-    fun getAllChofers(): Single<List<Chofer>> =
-        remoteChoferDataSource.getAllChofers()
+    fun getAllPassenger(): Single<List<Passenger>> =
+        remotePassengerDataSource.getAllPassenger()
 
-    fun getChofer(choferId: Int): Single<Chofer> =
-        remoteChoferDataSource.getChofer(choferId)
+    fun getPassenger(PassengerId: Int): String =
+        localPassengerDataSource.getPassenger(PassengerId)
 
-    fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean> =
-        localChoferDataSource.getFavoriteChoferStatus(choferId)
-
-    fun updateFavoriteChoferStatus(chofer: Chofer): Maybe<Boolean> =
-        localChoferDataSource.updateFavoriteChoferStatus(chofer)
+//    fun getFavoritePassengerStatus(PassengerId: Int): Maybe<Boolean> =
+//        localChoferDataSource.getFavoriteChoferStatus(PassengerId)
+//
+//    fun updateFavoritePassengerStatus(Passenger: Passenger): Maybe<Boolean> =
+//        localChoferDataSource.updateFavoriteChoferStatus(Passenger)
 
     //endregion
-}class ChoferRepository(
-    private val remoteChoferDataSource: RemoteChoferDataSource,
-//    private val localChoferDataSource: LocalChoferDataSource
+}
+class HorariosRepository(
+    private val remoteHorariosDataSource: RemoteHorariosDataSource,
+    private val localHorariosDataSource: LocalHorariosDataSource
 ) {
 
     //region Public Methods
 
-    fun getAllChofers(): Single<List<Chofer>> =
-        remoteChoferDataSource.getAllChofers()
+    fun getAllHorarios(): Single<List<Horarios>> =
+        remoteHorariosDataSource.getAllHorarios()
 
-    fun getChofer(choferId: Int): Single<Chofer> =
-        remoteChoferDataSource.getChofer(choferId)
+    fun getHorarios(HorariosId: Int): String =
+        localHorariosDataSource.getHorarios(HorariosId)
 
-    fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean> =
-        localChoferDataSource.getFavoriteChoferStatus(choferId)
-
-    fun updateFavoriteChoferStatus(chofer: Chofer): Maybe<Boolean> =
-        localChoferDataSource.updateFavoriteChoferStatus(chofer)
+//    fun getFavoriteHorariosStatus(HorariosId: Int): Maybe<Boolean> =
+//        localHorariosDataSource.getFavoriteHorariosStatus(HorariosId)
+//
+//    fun updateFavoriteHorariosStatus(Horarios: Horarios): Maybe<Boolean> =
+//        localHorariosDataSource.updateFavoriteChoferStatus(Horarios)
 
     //endregion
-}class ChoferRepository(
-    private val remoteChoferDataSource: RemoteChoferDataSource,
-//    private val localChoferDataSource: LocalChoferDataSource
+}class RouteRepository(
+    private val remoteRouteDataSource: RemoteRouteDataSource,
+    private val localRouteDataSource: LocalRouteDataSource
 ) {
 
     //region Public Methods
 
-    fun getAllChofers(): Single<List<Chofer>> =
-        remoteChoferDataSource.getAllChofers()
+    fun getAllRoute(): Single<List<Route>> =
+        remoteRouteDataSource.getAllRoutes()
 
-    fun getChofer(choferId: Int): Single<Chofer> =
-        remoteChoferDataSource.getChofer(choferId)
+    fun getRoute(RouteId: Int): String =
+        localRouteDataSource.getRoute(RouteId)
 
-    fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean> =
-        localChoferDataSource.getFavoriteChoferStatus(choferId)
-
-    fun updateFavoriteChoferStatus(chofer: Chofer): Maybe<Boolean> =
-        localChoferDataSource.updateFavoriteChoferStatus(chofer)
-
-    //endregion
-}class ChoferRepository(
-    private val remoteChoferDataSource: RemoteChoferDataSource,
-//    private val localChoferDataSource: LocalChoferDataSource
-) {
-
-    //region Public Methods
-
-    fun getAllChofers(): Single<List<Chofer>> =
-        remoteChoferDataSource.getAllChofers()
-
-    fun getChofer(choferId: Int): Single<Chofer> =
-        remoteChoferDataSource.getChofer(choferId)
-
-    fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean> =
-        localChoferDataSource.getFavoriteChoferStatus(choferId)
-
-    fun updateFavoriteChoferStatus(chofer: Chofer): Maybe<Boolean> =
-        localChoferDataSource.updateFavoriteChoferStatus(chofer)
+//    fun getFavoriteRouteStatus(RouteId: Int): Maybe<Boolean> =
+//        localRouteDataSource.getFavoriteRouteStatus(RouteId)
+//
+//    fun updateFavoriteRouteStatus(Route: Route): Maybe<Boolean> =
+//        localRouteDataSource.updateFavoriteRouteStatus(Route)
 
     //endregion
 }
