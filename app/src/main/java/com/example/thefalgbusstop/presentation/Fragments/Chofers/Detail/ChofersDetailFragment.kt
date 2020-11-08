@@ -32,7 +32,7 @@ class ChofersDetailFragment : Fragment() {
     }
 
     private val localChoferDataSource: LocalChoferDataSource by lazy {
-        ChoferRoomDataSource(ChoferDatabase.getDatabase(requireActivity().applicationContext))
+        ChoferRoomDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
     }
 
     private val choferRequest: ChoferRequest by lazy {

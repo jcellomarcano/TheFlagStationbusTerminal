@@ -8,12 +8,14 @@ import androidx.navigation.ui.NavigationUI
 import com.example.thefalgbusstop.R
 import com.example.thefalgbusstop.data.network.ApiConstants.BASE_API_URL
 import com.example.thefalgbusstop.data.network.ChoferRequest
+import com.example.thefalgbusstop.domain.Bus
 import com.example.thefalgbusstop.domain.Chofer
+import com.example.thefalgbusstop.presentation.Fragments.Buses.BusesFragment
 import com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class MainActivity : AppCompatActivity(), ChoferListFragment.OnChoferListFragmentListener {
+class MainActivity : AppCompatActivity(), ChoferListFragment.OnChoferListFragmentListener, BusesFragment.OnBusFragmentListener {
     lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +43,10 @@ class MainActivity : AppCompatActivity(), ChoferListFragment.OnChoferListFragmen
 
     override fun openChoferDetail(chofer: Chofer) {
         Log.i("MainActv", "openChoferDetail: Aun no hay pantalla de detalle")
+        TODO("Not yet implemented")
+    }
+
+    override fun openBusDetail(Bus: Bus) {
         TODO("Not yet implemented")
     }
 

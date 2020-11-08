@@ -5,14 +5,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.thefalgbusstop.R
 import com.example.thefalgbusstop.Utils.bindImageUrl
 import com.example.thefalgbusstop.Utils.bindingInflate
-import com.example.thefalgbusstop.data.ChoferEntity
 import com.example.thefalgbusstop.databinding.ChoferItemFrameBinding
 import com.example.thefalgbusstop.domain.Chofer
 import kotlinx.android.synthetic.main.chofer_item_frame.view.*
 
-class ChoferListAdapter(
+class RecyclerListAdapter(
         private val listener: (Chofer) -> Unit
-): RecyclerView.Adapter<ChoferListAdapter.ChoferListViewHolder>() {
+): RecyclerView.Adapter<RecyclerListAdapter.ChoferListViewHolder>() {
 
     private val choferList: MutableList<Chofer> = mutableListOf()
 
@@ -50,7 +49,7 @@ class ChoferListAdapter(
 
         fun bind(item: Chofer){
             dataBinding.chofer = item
-            itemView.profilePic.bindImageUrl(
+            itemView.busPic.bindImageUrl(
                     url = item.profileImg,
                     placeholder = R.drawable.ic_camera_alt_black,
                     errorPlaceholder = R.drawable.ic_broken_image_black

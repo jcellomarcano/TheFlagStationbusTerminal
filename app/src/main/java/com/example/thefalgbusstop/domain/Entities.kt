@@ -8,7 +8,7 @@ data class Chofer(
     val name: String,
     val lastname: String,
     val rut: String,
-    val fullname: String = "${name.capitalize(Locale.ROOT)} ${lastname.capitalize(Locale.ROOT)}",
+    val fullname: String = "${name.capitalize()} ${lastname.capitalize()}",
     val profileImg: String = "https://picsum.photos/60"
 
 )
@@ -16,8 +16,9 @@ data class Chofer(
 data class Route(
     val id: Int,
     val ida: String,
-    val vueta: String,
+    val vuelta: String,
     val terminal: String,
+
 )
 
 data class Bus(
@@ -25,7 +26,12 @@ data class Bus(
     val patente: String,
     val marca: String,
     val choferId: Int,
-)
+    val busImg: String = "https://cms-assets.tutsplus.com/uploads/users/158/posts/24850/preview_image/busPreview.jpg"
+) {
+    override fun toString(): String {
+        return "Bus(choferId=$choferId)"
+    }
+}
 
 data class Passenger(
     val id: Int,

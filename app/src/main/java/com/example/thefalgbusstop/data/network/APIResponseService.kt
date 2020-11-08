@@ -53,7 +53,7 @@ data class ChoferServer(
 data class BusServer(
         @SerializedName(KEY_ID) val id: Int,
         @SerializedName(KEY_PATENTE) val patente: String,
-        @SerializedName(KEY_MARCA) val marca: String?,
+        @SerializedName(KEY_MARCA) val marca: String,
         @SerializedName(KEY_CHOFER_ID) val choferId: Int,
 
 ): Parcelable
@@ -69,7 +69,7 @@ data class HorarioServer(
 data class RouteServer(
         @SerializedName(KEY_ID) val id: Int,
         @SerializedName(KEY_START) val ida: String,
-        @SerializedName(KEY_END) val vueta: String,
+        @SerializedName(KEY_END) val vuelta: String,
         @SerializedName(KEY_TERMINAL) val terminal: String,
 
 ): Parcelable

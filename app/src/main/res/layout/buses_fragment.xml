@@ -11,7 +11,7 @@
         tools:context=".presentation.Activities.MainActivity">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/srwChoferList"
+            android:id="@+id/srwBus"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -21,12 +21,12 @@
             tools:visibility="visible">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvChoferList"
+                android:id="@+id/rvBus"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/chofer_item_frame"
-                tools:itemCount="6"/>
+                tools:listitem="@layout/buses_item"
+                tools:itemCount="10"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
