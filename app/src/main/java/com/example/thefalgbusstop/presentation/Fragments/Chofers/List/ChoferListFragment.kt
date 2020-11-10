@@ -26,6 +26,7 @@ import com.example.thefalgbusstop.domain.Chofer
 import com.example.thefalgbusstop.domain.GetAllChofersUseCase
 import  com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerListAdapter
+import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
 import kotlinx.android.synthetic.main.chofers_fragment.*
 
 class ChoferListFragment : Fragment() {
@@ -70,8 +71,8 @@ class ChoferListFragment : Fragment() {
 
 
     // principal fun for data sources
-    private val localChoferDataSource: LocalChoferDataSource by lazy {
-        ChoferRoomDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
+    private val localAgencyDataSource: LocalAgencyDataSource by lazy {
+        AgencyDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
     }
 
     private val choferRequest: ChoferRequest by lazy {
@@ -83,7 +84,7 @@ class ChoferListFragment : Fragment() {
     }
 
     private val choferRepository: ChoferRepository by lazy {
-        ChoferRepository(remoteChoferDataSource, localChoferDataSource)
+        ChoferRepository(remoteChoferDataSource, localAgencyDataSource)
     }
 
     private val getAllChofersUseCase: GetAllChofersUseCase by lazy {

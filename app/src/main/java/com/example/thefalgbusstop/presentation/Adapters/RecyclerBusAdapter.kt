@@ -48,7 +48,7 @@ class RecyclerBusAdapter ( private val listener: (Bus) -> Unit):
 
         fun bind(item: Bus){
             dataBinding.bus = item
-            itemView.busPic.bindImageUrl(
+            itemView.profilePic.bindImageUrl(
                 url = item.busImg,
                 placeholder = R.drawable.ic_camera_alt_black,
                 errorPlaceholder = R.drawable.ic_broken_image_black

@@ -12,7 +12,7 @@ abstract class AgencyDatabase : RoomDatabase() {
 
     //region Abstract Methods
 
-    abstract fun choferDao(): ChoferDao
+    abstract fun agencyDao(): AgencyDao
 
     //endregion
 

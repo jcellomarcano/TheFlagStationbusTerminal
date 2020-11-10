@@ -32,37 +32,23 @@ interface RemoteHorariosDataSource {
 //    fun getHorarios(horariosId: Int): Single<Horarios>
 }
 
-interface LocalChoferDataSource {
+interface LocalAgencyDataSource {
 
-    fun getChofer(choferId: Int): String
+    fun getChofer(choferId: Int): Maybe<ChoferEntity>
 
     fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean>
 
-    fun updateFavoriteChoferStatus(chofer: Chofer): Maybe<Boolean>
-}
-interface LocalBusDataSource {
+    fun getPassenger(PassengerId: Int): String
 
     fun getBus(BusId: Int): String
 
-}
-interface LocalPassengerDataSource {
-
-    fun getPassenger(PassengerId: Int): String
-
-}
-interface LocalRouteDataSource {
-
     fun getRoute(RouteId: Int): String
 
-}
-interface LocalSitDataSource {
-
     fun getSit(SitId: Int): String
-
-}
-interface LocalHorariosDataSource {
 
     fun getHorarios(HorariosId: Int): String
 
 }
+
+
 

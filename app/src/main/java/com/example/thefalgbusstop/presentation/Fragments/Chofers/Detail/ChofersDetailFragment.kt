@@ -11,6 +11,7 @@ import com.example.thefalgbusstop.data.*
 import com.example.thefalgbusstop.data.network.ApiConstants
 import com.example.thefalgbusstop.data.network.ChoferRequest
 import com.example.thefalgbusstop.data.repositories.ChoferRepository
+import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
 
 class ChofersDetailFragment : Fragment() {
 
@@ -31,8 +32,8 @@ class ChofersDetailFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
-    private val localChoferDataSource: LocalChoferDataSource by lazy {
-        ChoferRoomDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
+    private val localAgencyDataSource: LocalAgencyDataSource by lazy {
+        AgencyDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
     }
 
     private val choferRequest: ChoferRequest by lazy {
@@ -44,7 +45,7 @@ class ChofersDetailFragment : Fragment() {
     }
 
     private val choferRepository: ChoferRepository by lazy {
-        ChoferRepository(remoteChoferDataSource, localChoferDataSource)
+        ChoferRepository(remoteChoferDataSource, localAgencyDataSource)
     }
 
 }

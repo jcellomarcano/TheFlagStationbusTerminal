@@ -5,4 +5,6 @@
     <string name="section_status">ID</string>
     <string name="section_species">Rut</string>
     <string name="section_gender">infoExtra</string>
+    <string name="section_origin">infoAdd2</string>
+    <string name="section_location">Addinfo3</string>
 </resources>

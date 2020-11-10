@@ -1,30 +1,44 @@
 package com.example.thefalgbusstop.presentation.Fragments.Buses
 
-import com.example.thefalgbusstop.data.AgencyDatabase
-import com.example.thefalgbusstop.data.LocalBusDataSource
-import com.example.thefalgbusstop.data.LocalHorariosDataSource
-import com.example.thefalgbusstop.data.LocalPassengerDataSource
+import com.example.thefalgbusstop.data.*
+import io.reactivex.Maybe
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class BusRoomDataSource(database: AgencyDatabase
-): LocalBusDataSource {
+
+class AgencyDataSource(database: AgencyDatabase
+): LocalAgencyDataSource {
+
+    private val agencyDao by lazy { database.agencyDao() }
+
     override fun getBus(BusId: Int): String {
         TODO("Not yet implemented")
     }
-
-}
-
-class HorariosRoomDataSource(
-    database: AgencyDatabase
-): LocalHorariosDataSource{
     override fun getHorarios(HorariosId: Int): String {
         TODO("Not yet implemented")
     }
-}
 
-class PassengerRoomDataSource(
-    database: AgencyDatabase
-): LocalPassengerDataSource {
     override fun getPassenger(PassengerId: Int): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun getChofer(choferId: Int): Maybe<ChoferEntity> {
+        return agencyDao.getChoferById(choferId)
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .onErrorReturn {  }
+//            .subscribeOn(Scheduler.io())
+
+    }
+
+    override fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getRoute(RouteId: Int): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun getSit(SitId: Int): String {
         TODO("Not yet implemented")
     }
 }

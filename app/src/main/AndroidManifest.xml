@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TheFalgBusStop"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.Activities.EditItemActivity"></activity>
+        <activity android:name=".presentation.Activities.ItemDetailActivity"></activity>
+        <activity android:name=".presentation.Activities.EditItemActivity" />
         <activity
             android:name=".presentation.Activities.MainActivity"
             android:label="@string/app_name"

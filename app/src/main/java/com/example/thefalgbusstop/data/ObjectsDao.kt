@@ -5,7 +5,7 @@ import io.reactivex.Flowable
 import io.reactivex.Maybe
 
 @Dao
-interface ChoferDao {
+interface AgencyDao {
 
 //    @Query("SELECT * FROM Chofer")
 //    fun getAllFavoriteChofers(): Flowable<List<ChoferEntity>>
