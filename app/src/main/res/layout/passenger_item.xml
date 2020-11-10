@@ -5,11 +5,10 @@
 
     <data>
         <variable
-            name="chofer"
-            type="com.example.thefalgbusstop.domain.Chofer" />
+            name="passenger"
+            type="com.example.thefalgbusstop.domain.Passenger" />
 
     </data>
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -47,7 +46,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:text="@{chofer.fullname}"
+                        android:text="@{passenger.fullname}"
                         app:layout_constraintStart_toEndOf="@+id/profilePic"
                         app:layout_constraintTop_toTopOf="@+id/profilePic" />
 
@@ -56,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@{chofer.rut}"
+                        android:text="@{passenger.rut}"
                         app:layout_constraintBottom_toBottomOf="@+id/profilePic"
                         app:layout_constraintStart_toEndOf="@+id/profilePic" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

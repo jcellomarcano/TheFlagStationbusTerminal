@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.thefalgbusstop.Utils.Event
-import  com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
+import com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
 import com.example.thefalgbusstop.domain.Chofer
 import com.example.thefalgbusstop.domain.GetAllChofersUseCase
 import io.reactivex.disposables.CompositeDisposable
@@ -100,7 +100,6 @@ class ChoferListViewModel(
     sealed class ChoferListNavigation {
         data class ShowChoferError(val error: Throwable) : ChoferListNavigation()
         data class ShowChoferList(val choferList: List<Chofer>) : ChoferListNavigation()
-//        object ShowEmptyListMessage : ChoferListNavigation()
         object HideLoading : ChoferListNavigation()
         object ShowLoading : ChoferListNavigation()
     }

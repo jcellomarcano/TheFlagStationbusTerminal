@@ -10,12 +10,20 @@ import com.example.thefalgbusstop.data.network.ApiConstants.BASE_API_URL
 import com.example.thefalgbusstop.data.network.ChoferRequest
 import com.example.thefalgbusstop.domain.Bus
 import com.example.thefalgbusstop.domain.Chofer
+import com.example.thefalgbusstop.domain.Horarios
+import com.example.thefalgbusstop.domain.Passenger
 import com.example.thefalgbusstop.presentation.Fragments.Buses.BusesFragment
 import com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListFragment
+import com.example.thefalgbusstop.presentation.Fragments.Hours.HoursFragment
+import com.example.thefalgbusstop.presentation.Fragments.Passengers.PassengersFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class MainActivity : AppCompatActivity(), ChoferListFragment.OnChoferListFragmentListener, BusesFragment.OnBusFragmentListener {
+class MainActivity : AppCompatActivity(),
+    ChoferListFragment.OnChoferListFragmentListener,
+    BusesFragment.OnBusFragmentListener,
+    HoursFragment.OnHoursFragmentListener,
+    PassengersFragment.OnPassengersFragmentListener{
     lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +55,14 @@ class MainActivity : AppCompatActivity(), ChoferListFragment.OnChoferListFragmen
     }
 
     override fun openBusDetail(Bus: Bus) {
+        TODO("Not yet implemented")
+    }
+
+    override fun openHoursDetail(Hours: Horarios) {
+        TODO("Not yet implemented")
+    }
+
+    override fun openPassengerDetail(passenger: Passenger) {
         TODO("Not yet implemented")
     }
 

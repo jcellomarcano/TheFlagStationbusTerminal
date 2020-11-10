@@ -28,8 +28,6 @@ import  com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferLis
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerListAdapter
 import kotlinx.android.synthetic.main.chofers_fragment.*
 
-//import kotlinx.android.synthetic.main.chofers_fragment.*
-
 class ChoferListFragment : Fragment() {
 
     private lateinit var recyclerListAdapter: RecyclerListAdapter
@@ -63,7 +61,6 @@ class ChoferListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ChoferListViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
     //region Inner Classes & Interfaces

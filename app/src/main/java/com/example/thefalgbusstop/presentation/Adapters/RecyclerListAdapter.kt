@@ -49,7 +49,7 @@ class RecyclerListAdapter(
 
         fun bind(item: Chofer){
             dataBinding.chofer = item
-            itemView.busPic.bindImageUrl(
+            itemView.profilePic.bindImageUrl(
                     url = item.profileImg,
                     placeholder = R.drawable.ic_camera_alt_black,
                     errorPlaceholder = R.drawable.ic_broken_image_black

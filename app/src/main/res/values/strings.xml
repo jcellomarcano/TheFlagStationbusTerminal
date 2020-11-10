@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">TheFalgBusStop</string>
     <string name="error_no_available_data">Datos no disponibles de momento</string>
+    <string name="content_description_character_detail_image">userImg</string>
+    <string name="section_status">ID</string>
+    <string name="section_species">Rut</string>
+    <string name="section_gender">infoExtra</string>
 </resources>

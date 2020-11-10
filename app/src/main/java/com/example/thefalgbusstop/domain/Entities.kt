@@ -38,6 +38,9 @@ data class Passenger(
     val name: String,
     val lastname: String,
     val rut: String,
+    val fullname: String = "${name.capitalize()} ${lastname.capitalize()}",
+    val profileImg: String = "https://picsum.photos/60"
+
 )
 data class Sit(
     val id: Int,
@@ -51,4 +54,9 @@ data class Horarios(
     val hora: String,
     val idTrayecto: Int,
     val idBus: Int,
-)
+) {
+    override fun toString(): String {
+        return "Salida: $fecha $hora"
+    }
+
+}

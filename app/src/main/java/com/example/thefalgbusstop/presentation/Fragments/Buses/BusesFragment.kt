@@ -28,14 +28,13 @@ import com.example.thefalgbusstop.presentation.Adapters.RecyclerBusAdapter
 import com.example.thefalgbusstop.Utils.Event
 import com.example.thefalgbusstop.Utils.setItemDecorationSpacing
 import com.example.thefalgbusstop.Utils.showLongToast
-import com.example.thefalgbustop.presentation.Fragments.Buses.BusRoomDataSource
 import kotlinx.android.synthetic.main.buses_fragment.*
 
 
 class BusesFragment : Fragment() {
 
     private lateinit var busAdapter: RecyclerBusAdapter
-    private lateinit var listener: BusesFragment.OnBusFragmentListener
+    private lateinit var listener: OnBusFragmentListener
 
 //region Companion object
 
@@ -66,7 +65,6 @@ class BusesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(BusesViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
     //region Inner Classes & Interfaces
