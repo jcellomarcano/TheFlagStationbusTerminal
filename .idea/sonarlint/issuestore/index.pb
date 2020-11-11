@@ -3,10 +3,6 @@
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 X
 (gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
-á
-Wapp/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Routes/RouteList.kt,b/3/b3f4535572b55f831435d26596f04aceaabef91c
-ê
-`app/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Routes/RouteListViewModel.kt,e/7/e71ebeaded706906e4b822e5d5c265eef7bcffa8
 î
 dapp/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Passengers/PassengersFragment.kt,8/5/85193820a6b625a7b2355857208a40837c092f68
 ä
@@ -43,8 +39,6 @@ v
 Fapp/src/main/java/com/example/thefalgbusstop/data/DatabaseConverter.kt,1/5/15435ac6c6b910375609b61dcc29174782b019c7
 o
 ?app/src/main/java/com/example/thefalgbusstop/data/ObjectsDao.kt,5/0/506c01df7400d9ec0960291591e503fc5fe9a930
-w
-Gapp/src/main/java/com/example/thefalgbusstop/data/DatabaseDataSource.kt,d/3/d3a075ab7c28ee416eb87e9dfe8e9597654334b7
 s
 Capp/src/main/java/com/example/thefalgbusstop/data/AgencyDatabase.kt,2/a/2a18496f3be87d5de5479abc36e7605fd5be15d3
 õ
@@ -65,8 +59,6 @@ o
 ?app/src/main/java/com/example/thefalgbusstop/domain/UseCases.kt,5/4/5409cd01d189a19534c17cf455d6c010e579f1a2
 ñ
 fapp/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Chofers/List/ChoferListFragment.kt,9/3/9355ae586645129ee45cec18c75252e855f75f0f
-á
-Wapp/src/main/java/com/example/thefalgbusstop/presentation/Adapters/ChoferListAdapter.kt,b/f/bf2db8215ecc3add23458bd6b8cfee46bbe3d1b5
 ó
 gapp/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Chofers/List/ChoferListViewModel.kt,e/8/e88e5c51e406c9d334eb86529733c93f515fade2
 h
@@ -77,3 +69,27 @@ h
 8app/src/main/java/com/example/thefalgbusstop/ui/Theme.kt,0/c/0cbcda29e3ce58ae3eb668da9fd0ca319a670a88
 g
 7app/src/main/java/com/example/thefalgbusstop/ui/Type.kt,c/f/cf0114c4ab28c7aae26913cc9ed18921a29e6167
+à
+Xapp/src/main/java/com/example/thefalgbusstop/presentation/Adapters/RecyclerBusAdapter.kt,0/8/08cbf70f5597b1f82402de88e0acd3ebc38239e3
+ã
+[app/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Buses/BusesViewModel.kt,1/8/188819a1a7e7c174a3a37bb7dbea532c8a8fb22c
+ã
+[app/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Hours/HoursViewModel.kt,9/9/997bf118ee29659d05f7c27764d0f749cef621bd
+ä
+Zapp/src/main/java/com/example/thefalgbusstop/presentation/Adapters/RecyclerHoursAdapter.kt,3/a/3a57679c4a2fdeb21f3bceda4d4503f59103a94d
+é
+^app/src/main/java/com/example/thefalgbusstop/presentation/Adapters/RecyclerPassengerAdapter.kt,6/4/64dd6ac5647aa17737243bdd093570fd784002af
+â
+Yapp/src/main/java/com/example/thefalgbusstop/presentation/Adapters/RecyclerListAdapter.kt,5/e/5e2dae525343364f8051210a715b9b36d8cee94a
+q
+Aapp/src/main/java/com/example/thefalgbusstop/data/DatabaseDaos.kt,9/1/913ca22627f1eee76cfd049a2ed32d089be6ebf9
+ï
+eapp/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Passengers/PassengersViewModel.kt,5/b/5bc2091493bc6c56e6bf1f722aee9773f3646503
+s
+Capp/src/main/java/com/example/thefalgbusstop/data/RoomDataSource.kt,0/0/0042a28265c98d9a520e41c59ba87989489262ff
+ä
+Zapp/src/main/java/com/example/thefalgbusstop/presentation/Activities/ItemDetailActivity.kt,c/5/c5878b6ed3b776255fce969b8474f0b7eebc2f62
+à
+Xapp/src/main/java/com/example/thefalgbusstop/presentation/Activities/EditItemActivity.kt,5/a/5af18e9f9de7980d0aec50108e3427c872dea30e
+ì
+capp/src/main/java/com/example/thefalgbusstop/presentation/Activities/ItemDetailActivityViewModel.kt,c/d/cd5a4e4c934a4ec2e8028543fc6d771c3845487a
