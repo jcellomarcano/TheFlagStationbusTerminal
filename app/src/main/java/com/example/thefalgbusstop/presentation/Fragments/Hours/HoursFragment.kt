@@ -25,7 +25,7 @@ import com.example.thefalgbusstop.databinding.HoursFragmentBinding
 import com.example.thefalgbusstop.domain.GetAllHorariosUseCase
 import com.example.thefalgbusstop.domain.Horarios
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerHoursAdapter
-import com.example.thefalgbusstop.presentation.Fragments.Buses.HorariosRoomDataSource
+import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
 import kotlinx.android.synthetic.main.buses_fragment.*
 import kotlinx.android.synthetic.main.hours_fragment.*
 
@@ -68,8 +68,8 @@ class HoursFragment : Fragment() {
 
 
     // principal fun for data sources
-    private val localHoursDataSource: LocalHorariosDataSource by lazy {
-        HorariosRoomDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
+    private val localAgencyDataSource: LocalAgencyDataSource by lazy {
+        AgencyDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
     }
 
     private val hoursRequest: HorarioRequest by lazy {
@@ -81,7 +81,7 @@ class HoursFragment : Fragment() {
     }
 
     private val hoursRepository: HorariosRepository by lazy {
-        HorariosRepository(remoteHoursDataSource, localHoursDataSource)
+        HorariosRepository(remoteHoursDataSource, localAgencyDataSource)
     }
 
     private val getAllHoursUseCase: GetAllHorariosUseCase by lazy {

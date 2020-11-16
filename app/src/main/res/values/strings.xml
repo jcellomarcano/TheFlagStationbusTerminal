@@ -7,4 +7,5 @@
     <string name="section_gender">infoExtra</string>
     <string name="section_origin">infoAdd2</string>
     <string name="section_location">Addinfo3</string>
+    <string name="error_no_character_data">Error en data</string>
 </resources>

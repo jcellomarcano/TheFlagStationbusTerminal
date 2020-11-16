@@ -16,7 +16,6 @@ import com.example.thefalgbusstop.R
 import com.example.thefalgbusstop.Utils.getViewModel
 import com.example.thefalgbusstop.data.AgencyDatabase
 import com.example.thefalgbusstop.data.BusRetrofitDataSource
-import com.example.thefalgbusstop.data.LocalBusDataSource
 import com.example.thefalgbusstop.data.RemoteBusDataSource
 import com.example.thefalgbusstop.data.network.ApiConstants
 import com.example.thefalgbusstop.data.network.BusRequest
@@ -28,6 +27,7 @@ import com.example.thefalgbusstop.presentation.Adapters.RecyclerBusAdapter
 import com.example.thefalgbusstop.Utils.Event
 import com.example.thefalgbusstop.Utils.setItemDecorationSpacing
 import com.example.thefalgbusstop.Utils.showLongToast
+import com.example.thefalgbusstop.data.LocalAgencyDataSource
 import kotlinx.android.synthetic.main.buses_fragment.*
 
 
@@ -74,8 +74,8 @@ class BusesFragment : Fragment() {
 
 
     // principal fun for data sources
-    private val localBusDataSource: LocalBusDataSource by lazy {
-        BusRoomDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
+    private val localAgencyDataSource: LocalAgencyDataSource by lazy {
+        AgencyDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
     }
 
     private val busRequest: BusRequest by lazy {
@@ -87,7 +87,7 @@ class BusesFragment : Fragment() {
     }
 
     private val busRepository: BusRepository by lazy {
-        BusRepository(remoteBusDataSource, localBusDataSource)
+        BusRepository(remoteBusDataSource, localAgencyDataSource)
     }
 
     private val getAllBusUseCase: GetAllBusUseCase by lazy {

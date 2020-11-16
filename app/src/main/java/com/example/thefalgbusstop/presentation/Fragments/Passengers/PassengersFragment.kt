@@ -25,7 +25,7 @@ import com.example.thefalgbusstop.databinding.PassengersFragmentBinding
 import com.example.thefalgbusstop.domain.GetAllPassengersUseCase
 import com.example.thefalgbusstop.domain.Passenger
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerPassengerAdapter
-import com.example.thefalgbusstop.presentation.Fragments.Buses.PassengerRoomDataSource
+import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
 import com.example.thefalgbusstop.presentation.Fragments.Passengers.PassengersViewModel.PassengerListNavigation.*
 import kotlinx.android.synthetic.main.passengers_fragment.*
 
@@ -68,8 +68,8 @@ class PassengersFragment : Fragment() {
     }
 
     // principal fun for data sources
-    private val localPassengerDataSource: LocalPassengerDataSource by lazy {
-        PassengerRoomDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
+    private val localAgencyDataSource: LocalAgencyDataSource by lazy {
+        AgencyDataSource(AgencyDatabase.getDatabase(requireActivity().applicationContext))
     }
 
     private val passengerRequest: PassengerRequest by lazy {
@@ -81,7 +81,7 @@ class PassengersFragment : Fragment() {
     }
 
     private val passengerRepository: PassengerRepository by lazy {
-        PassengerRepository(remotePassengerDataSource, localPassengerDataSource)
+        PassengerRepository(remotePassengerDataSource, localAgencyDataSource)
     }
 
     private val getAllPassengersUseCase: GetAllPassengersUseCase by lazy {

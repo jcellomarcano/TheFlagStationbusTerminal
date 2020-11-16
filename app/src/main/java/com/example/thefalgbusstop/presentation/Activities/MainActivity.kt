@@ -6,17 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.thefalgbusstop.R
+import com.example.thefalgbusstop.Utils.Cosntants
 import com.example.thefalgbusstop.data.network.ApiConstants.BASE_API_URL
 import com.example.thefalgbusstop.data.network.ChoferRequest
 import com.example.thefalgbusstop.domain.Bus
 import com.example.thefalgbusstop.domain.Chofer
 import com.example.thefalgbusstop.domain.Horarios
 import com.example.thefalgbusstop.domain.Passenger
+import com.example.thefalgbusstop.Utils.startActivity
+import com.example.thefalgbusstop.parcelables.toChoferrParcelable
 import com.example.thefalgbusstop.presentation.Fragments.Buses.BusesFragment
 import com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListFragment
 import com.example.thefalgbusstop.presentation.Fragments.Hours.HoursFragment
 import com.example.thefalgbusstop.presentation.Fragments.Passengers.PassengersFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.lang.System.exit
 
 
 class MainActivity : AppCompatActivity(),
@@ -51,7 +55,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun openChoferDetail(chofer: Chofer) {
         Log.i("MainActv", "openChoferDetail: Aun no hay pantalla de detalle")
-        TODO("Not yet implemented")
+        startActivity<ItemDetailActivity> {
+            putExtra(Cosntants.EXTRA_CHOFER, chofer.toChoferrParcelable())
+        }
+        overridePendingTransition(R.anim.entry, R.anim.exit)
     }
 
     override fun openBusDetail(Bus: Bus) {

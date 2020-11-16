@@ -16,7 +16,7 @@ class ChoferRepository(
         remoteChoferDataSource.getAllChofers()
 
     fun getChofer(choferId: Int): String =
-        localAgencyyDataSource.getChofer(choferId)
+        localAgencyyDataSource.getChofer(choferId).toString()
 
     fun getChoferRepo(choferId: Int): Single<Chofer> =
         remoteChoferDataSource.getChoferRepo(choferId)

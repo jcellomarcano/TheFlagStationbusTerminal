@@ -21,8 +21,6 @@ class ItemDetailActivityViewModel (
     private val _passengerValues = MutableLiveData<Passenger>()
     val passengerValues: LiveData<Passenger> get() = _passengerValues
 
-
-
     private val _events = MutableLiveData<Event<UserDetailNavigation>>()
     val events: LiveData<Event<UserDetailNavigation>> get() = _events
 
