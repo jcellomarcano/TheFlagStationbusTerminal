@@ -3,14 +3,14 @@ package com.example.thefalgbusstop.presentation.Fragments.Chofers.List
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.thefalgbusstop.Utils.Event
+import com.example.thefalgbusstop.utils.Event
 import com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
-import com.example.thefalgbusstop.domain.Chofer
-import com.example.thefalgbusstop.domain.GetAllChofersUseCase
+import com.example.thefalgbusstop.domain.entities.Chofer
+import com.example.thefalgbusstop.domain.ChofersUseCase
 import io.reactivex.disposables.CompositeDisposable
 
 class ChoferListViewModel(
-        private val getAllChofersUseCase: GetAllChofersUseCase) : ViewModel() {
+        private val chofersUseCase: ChofersUseCase) : ViewModel() {
 
     //region Fields
 
@@ -50,14 +50,13 @@ class ChoferListViewModel(
 
     fun onGetAllChofers(){
         disposable.add(
-                getAllChofersUseCase
+                chofersUseCase
                         .invoke()
                         .doOnSubscribe { showLoading() }
                         .subscribe({ choferList ->
                             if (choferList.size < PAGE_SIZE) {
                                 isLastPage = true
                             }
-
                             hideLoading()
                             _events.value = Event(ShowChoferList(choferList))
                         }, { error ->
@@ -110,7 +109,7 @@ class ChoferListViewModel(
 
     companion object {
 
-        private const val PAGE_SIZE = 7
+        private const val PAGE_SIZE = 20
     }
 
     //endregion

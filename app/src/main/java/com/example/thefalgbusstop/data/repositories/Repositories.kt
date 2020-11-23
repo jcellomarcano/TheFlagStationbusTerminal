@@ -1,13 +1,15 @@
 package com.example.thefalgbusstop.data.repositories
 
+import android.util.Log
 import com.example.thefalgbusstop.data.*
-import com.example.thefalgbusstop.domain.*
+import com.example.thefalgbusstop.domain.entities.*
 import io.reactivex.Maybe
 import io.reactivex.Single
 
+
 class ChoferRepository(
     private val remoteChoferDataSource: RemoteChoferDataSource,
-    private val localAgencyyDataSource: LocalAgencyDataSource
+    private val localAgencyyDataSource: LocalAgencyDataSource,
 ) {
 
     //region Public Methods
@@ -24,45 +26,48 @@ class ChoferRepository(
     fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean> =
         localAgencyyDataSource.getFavoriteChoferStatus(choferId)
 
+    fun createChofer(chofer: ChoferPost): Single<responsePojo> =
+        remoteChoferDataSource.createChofer(chofer)
+
+    fun deleteChofer(id: Int) {
+        remoteChoferDataSource.deleteChofer(id)
+        Log.i("Repository", "deleteChofer: " + remoteChoferDataSource.deleteChofer(id))
+    }
+
     //endregion
 }
 class BusRepository(
     private val remoteBusDataSource: RemoteBusDataSource,
-    private val localAgencytaSource: LocalAgencyDataSource
+    private val localAgencytaSource: LocalAgencyDataSource,
 ) {
 
     //region Public Methods
 
     fun getAllBus(): Single<List<Bus>> =
         remoteBusDataSource.getAllBus()
-
     fun getChofer(busId: Int): String =
         localAgencytaSource.getBus(busId)
-
     //endregion
 }
 
 class SitRepository(
     private val remoteSitDataSource: RemoteSitDataSource,
-    private val localAgencytaSource: LocalAgencyDataSource
+    private val localAgencytaSource: LocalAgencyDataSource,
 ) {
 
     //region Public Methods
-
     fun getAllSit(): Single<List<Sit>> =
         remoteSitDataSource.getAllSit()
-
     fun getSit(sitId: Int): String =
         localAgencytaSource.getSit(sitId)
-
-
     //endregion
 }
 
 class PassengerRepository(
     private val remotePassengerDataSource: RemotePassengerDataSource,
-    private val localAgencyngerDataSource: LocalAgencyDataSource
+    private val localAgencyngerDataSource: LocalAgencyDataSource,
 ) {
+
 
     //region Public Methods
 
@@ -82,7 +87,7 @@ class PassengerRepository(
 }
 class HorariosRepository(
     private val remoteHorariosDataSource: RemoteHorariosDataSource,
-    private val localAgencyiosDataSource: LocalAgencyDataSource
+    private val localAgencyiosDataSource: LocalAgencyDataSource,
 ) {
 
     //region Public Methods
@@ -102,7 +107,7 @@ class HorariosRepository(
     //endregion
 }class RouteRepository(
     private val remoteRouteDataSource: RemoteRouteDataSource,
-    private val localAgencyDataSource: LocalAgencyDataSource
+    private val localAgencyDataSource: LocalAgencyDataSource,
 ) {
 
     //region Public Methods

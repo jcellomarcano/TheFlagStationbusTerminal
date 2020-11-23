@@ -21,26 +21,6 @@ import com.example.thefalgbusstop.data.network.ApiConstants.KEY_TERMINAL
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-data class ChoferResponseServer(
-        @SerializedName(KEY_RESULTS) val response: List<ChoferServer>
-)
-
-data class BusResponseServer(
-        @SerializedName(KEY_RESULTS) val results: List<BusServer>
-)
-data class HorarioResponseServer(
-        @SerializedName(KEY_RESULTS) val results: List<HorarioServer>
-)
-data class RouteResponseServer(
-        @SerializedName(KEY_RESULTS) val results: List<RouteServer>
-)
-data class SitResponseServer(
-        @SerializedName(KEY_RESULTS) val results: List<SitServer>
-)
-data class PassengerResponseServer(
-        @SerializedName(KEY_RESULTS) val results: List<PassengerServer>
-)
-
 @Parcelize
 data class ChoferServer(
         @SerializedName(KEY_ID) val id: Int,
@@ -57,6 +37,7 @@ data class BusServer(
         @SerializedName(KEY_CHOFER_ID) val choferId: Int,
 
 ): Parcelable
+
 @Parcelize
 data class HorarioServer(
         @SerializedName(KEY_ID) val id: Int,
@@ -65,6 +46,7 @@ data class HorarioServer(
         @SerializedName(KEY_ID_ROUTE) val idTrayecto: Int,
         @SerializedName(KEY_ID_BUS) val idBus: Int,
 ): Parcelable
+
 @Parcelize
 data class RouteServer(
         @SerializedName(KEY_ID) val id: Int,
@@ -73,6 +55,7 @@ data class RouteServer(
         @SerializedName(KEY_TERMINAL) val terminal: String,
 
 ): Parcelable
+
 @Parcelize
 data class SitServer(
         @SerializedName(KEY_ID) val id: Int,
@@ -80,6 +63,7 @@ data class SitServer(
         @SerializedName(KEY_ID_BUS) val idBus: Int,
         @SerializedName(KEY_ID_PASAJERO) val idPasenger: Int,
 ): Parcelable
+
 @Parcelize
 data class PassengerServer(
         @SerializedName(KEY_ID) val id: Int,

@@ -3,10 +3,10 @@ package com.example.thefalgbusstop.presentation.Adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thefalgbusstop.R
-import com.example.thefalgbusstop.Utils.bindImageUrl
-import com.example.thefalgbusstop.Utils.bindingInflate
+import com.example.thefalgbusstop.utils.bindImageUrl
+import com.example.thefalgbusstop.utils.bindingInflate
 import com.example.thefalgbusstop.databinding.ChoferItemFrameBinding
-import com.example.thefalgbusstop.domain.Chofer
+import com.example.thefalgbusstop.domain.entities.Chofer
 import kotlinx.android.synthetic.main.chofer_item_frame.view.*
 
 class RecyclerListAdapter(

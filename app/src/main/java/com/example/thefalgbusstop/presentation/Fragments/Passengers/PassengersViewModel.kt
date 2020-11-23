@@ -3,9 +3,9 @@ package com.example.thefalgbusstop.presentation.Fragments.Passengers
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.thefalgbusstop.Utils.Event
+import com.example.thefalgbusstop.utils.Event
 import com.example.thefalgbusstop.domain.GetAllPassengersUseCase
-import com.example.thefalgbusstop.domain.Passenger
+import com.example.thefalgbusstop.domain.entities.Passenger
 import io.reactivex.disposables.CompositeDisposable
 import com.example.thefalgbusstop.presentation.Fragments.Passengers.PassengersViewModel.PassengerListNavigation.*
 
@@ -105,7 +105,7 @@ class PassengersViewModel(
 
     companion object {
 
-        private const val PAGE_SIZE = 7
+        private const val PAGE_SIZE = 20
     }
 
     //endregion

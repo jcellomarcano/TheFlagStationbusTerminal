@@ -8,4 +8,21 @@
     <string name="section_origin">infoAdd2</string>
     <string name="section_location">Addinfo3</string>
     <string name="error_no_character_data">Error en data</string>
+    <string name="delete_btn">Borrar</string>
+    <string name="edit_btn">Editar</string>
+    <string name="att_id">id</string>
+    <string name="confirmText">Confirmar</string>
+    <string name="nameTag">Nombre</string>
+    <string name="lastnameTag">Apellido</string>
+    <string name="rutTag">RUT</string>
+
+    <string-array name="entityType">
+        <item>Seleccione una Opción</item>
+        <item>Chofer</item>
+        <item>Pasajero</item>
+        <item>Horario</item>
+        <item>Ruta</item>
+        <item>Asiento</item>
+        <item>Bus</item>
+    </string-array>
 </resources>

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="bus"
-            type="com.example.thefalgbusstop.domain.Bus" />
+            type="com.example.thefalgbusstop.domain.entities.Bus" />
 
     </data>
 

@@ -3,10 +3,10 @@ package com.example.thefalgbusstop.presentation.Adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thefalgbusstop.R
-import com.example.thefalgbusstop.Utils.bindImageUrl
-import com.example.thefalgbusstop.Utils.bindingInflate
+import com.example.thefalgbusstop.utils.bindImageUrl
+import com.example.thefalgbusstop.utils.bindingInflate
 import com.example.thefalgbusstop.databinding.BusesItemBinding
-import com.example.thefalgbusstop.domain.Bus
+import com.example.thefalgbusstop.domain.entities.Bus
 import kotlinx.android.synthetic.main.buses_item.view.*
 
 

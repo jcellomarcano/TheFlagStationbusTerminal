@@ -3,9 +3,9 @@ package com.example.thefalgbusstop.presentation.Fragments.Hours
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.thefalgbusstop.Utils.Event
+import com.example.thefalgbusstop.utils.Event
 import com.example.thefalgbusstop.domain.GetAllHorariosUseCase
-import com.example.thefalgbusstop.domain.Horarios
+import com.example.thefalgbusstop.domain.entities.Horarios
 import io.reactivex.disposables.CompositeDisposable
 
 class HoursViewModel(

@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thefalgbusstop.R
-import com.example.thefalgbusstop.Utils.getViewModel
+import com.example.thefalgbusstop.utils.getViewModel
 import com.example.thefalgbusstop.data.AgencyDatabase
 import com.example.thefalgbusstop.data.BusRetrofitDataSource
 import com.example.thefalgbusstop.data.RemoteBusDataSource
@@ -21,12 +21,12 @@ import com.example.thefalgbusstop.data.network.ApiConstants
 import com.example.thefalgbusstop.data.network.BusRequest
 import com.example.thefalgbusstop.data.repositories.BusRepository
 import com.example.thefalgbusstop.databinding.BusesFragmentBinding
-import com.example.thefalgbusstop.domain.Bus
+import com.example.thefalgbusstop.domain.entities.Bus
 import com.example.thefalgbusstop.domain.GetAllBusUseCase
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerBusAdapter
-import com.example.thefalgbusstop.Utils.Event
-import com.example.thefalgbusstop.Utils.setItemDecorationSpacing
-import com.example.thefalgbusstop.Utils.showLongToast
+import com.example.thefalgbusstop.utils.Event
+import com.example.thefalgbusstop.utils.setItemDecorationSpacing
+import com.example.thefalgbusstop.utils.showLongToast
 import com.example.thefalgbusstop.data.LocalAgencyDataSource
 import kotlinx.android.synthetic.main.buses_fragment.*
 

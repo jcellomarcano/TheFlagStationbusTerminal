@@ -1,7 +1,6 @@
 package com.example.thefalgbusstop.data
 
-import com.example.thefalgbusstop.domain.*
-import io.reactivex.Flowable
+import com.example.thefalgbusstop.domain.entities.*
 import io.reactivex.Maybe
 import io.reactivex.Single
 
@@ -10,6 +9,9 @@ import io.reactivex.Single
 interface RemoteChoferDataSource {
     fun getAllChofers(): Single<List<Chofer>>
     fun getChoferRepo(id: Int): Single<Chofer>
+    fun deleteChofer(id: Int): Any
+    fun updateChofer(id: Int): Any
+    fun createChofer(chofer: ChoferPost):Single<responsePojo>
 }
 interface RemoteBusDataSource {
     fun getAllBus(): Single<List<Bus>>

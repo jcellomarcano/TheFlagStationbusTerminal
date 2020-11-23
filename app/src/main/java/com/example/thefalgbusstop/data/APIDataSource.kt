@@ -5,9 +5,13 @@ import com.example.thefalgbusstop.data.network.*
 import com.example.thefalgbusstop.data.network.ApiConstants.API_KEY
 import com.example.thefalgbusstop.data.services.*
 import com.example.thefalgbusstop.domain.*
+import com.example.thefalgbusstop.domain.entities.*
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 //Implementation of Data Source
 
@@ -28,7 +32,50 @@ class ChoferRetrofitDataSource(
     override fun getChoferRepo(id: Int): Single<Chofer> {
         TODO("Not yet implemented")
     }
+
+    override fun deleteChofer(id: Int) {
+        return choferRequest
+            .getService<ChoferService>()
+            .deleteChoferAlt(API_KEY = API_KEY, id)
+            .enqueue(object : Callback<responsePojo> {
+                override fun onResponse(
+                    call: Call<responsePojo>,
+                    response: Response<responsePojo>,
+                ) {
+                    if (!response.isSuccessful) {
+                        Log.i("data Source", "onResponse: ${response.code()}")
+
+                        return
+                    } else {
+                        Log.i("data Source", "onResponse: ${response.body()}")
+                        return
+                    }
+                }
+                override fun onFailure(call: Call<responsePojo>, t: Throwable) {
+                    Log.i("data Source", "onFailure: ${t.message}")
+                    return
+                }
+
+            })
+    }
+
+    override fun updateChofer(id: Int): Any {
+        TODO("Not yet implemented")
+    }
+
+    override fun createChofer(chofer: ChoferPost): Single<responsePojo> {
+        return choferRequest
+            .getService<ChoferService>()
+            .createChofer(
+                API_KEY = API_KEY,
+                chofer = chofer)
+            .map(responsePojoServer::toDomainResponsePojo)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+    }
 }
+
+
 class BusRetrofitDataSource(
     private val BusRequest: BusRequest
 ): RemoteBusDataSource {

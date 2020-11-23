@@ -6,7 +6,7 @@
     <data>
         <variable
             name="chofer"
-            type="com.example.thefalgbusstop.domain.Chofer" />
+            type="com.example.thefalgbusstop.domain.entities.Chofer" />
 
     </data>
 

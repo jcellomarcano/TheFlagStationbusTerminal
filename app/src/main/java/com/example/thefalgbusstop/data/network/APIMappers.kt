@@ -1,7 +1,7 @@
 package com.example.thefalgbusstop.data.network
 
 
-import com.example.thefalgbusstop.domain.*
+import com.example.thefalgbusstop.domain.entities.*
 
 fun List<ChoferServer>.toChoferDomainList(): List<Chofer> = map {
     it.run{
@@ -70,13 +70,4 @@ fun List<HorarioServer>.toHorarioDomainList(): List<Horarios> = map {
     }
 }
 
-
-
-fun ChoferServer.toChoferDomain() = Chofer(
-            id,
-            name,
-            lastname,
-            rut
-        )
-
-
+fun responsePojoServer.toDomainResponsePojo(): responsePojo = responsePojo(message)

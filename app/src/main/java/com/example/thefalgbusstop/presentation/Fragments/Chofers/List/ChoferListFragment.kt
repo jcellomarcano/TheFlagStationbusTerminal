@@ -13,17 +13,17 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thefalgbusstop.R
-import com.example.thefalgbusstop.Utils.Event
-import com.example.thefalgbusstop.Utils.getViewModel
-import com.example.thefalgbusstop.Utils.setItemDecorationSpacing
-import com.example.thefalgbusstop.Utils.showLongToast
+import com.example.thefalgbusstop.utils.Event
+import com.example.thefalgbusstop.utils.getViewModel
+import com.example.thefalgbusstop.utils.setItemDecorationSpacing
+import com.example.thefalgbusstop.utils.showLongToast
 import com.example.thefalgbusstop.data.*
 import com.example.thefalgbusstop.data.network.ApiConstants
 import com.example.thefalgbusstop.data.network.ChoferRequest
 import com.example.thefalgbusstop.data.repositories.ChoferRepository
 import com.example.thefalgbusstop.databinding.ChofersFragmentBinding
-import com.example.thefalgbusstop.domain.Chofer
-import com.example.thefalgbusstop.domain.GetAllChofersUseCase
+import com.example.thefalgbusstop.domain.entities.Chofer
+import com.example.thefalgbusstop.domain.ChofersUseCase
 import  com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerListAdapter
 import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
@@ -87,12 +87,12 @@ class ChoferListFragment : Fragment() {
         ChoferRepository(remoteChoferDataSource, localAgencyDataSource)
     }
 
-    private val getAllChofersUseCase: GetAllChofersUseCase by lazy {
-        GetAllChofersUseCase(choferRepository)
+    private val chofersUseCase: ChofersUseCase by lazy {
+        ChofersUseCase(choferRepository)
     }
 
     private val choferListViewModel: ChoferListViewModel by lazy {
-        getViewModel { ChoferListViewModel(getAllChofersUseCase) }
+        getViewModel { ChoferListViewModel(chofersUseCase) }
     }
 
     private val onScrollListener: RecyclerView.OnScrollListener by lazy {

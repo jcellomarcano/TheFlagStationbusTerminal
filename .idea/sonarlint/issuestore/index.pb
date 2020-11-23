@@ -19,8 +19,6 @@ Iapp/src/main/java/com/example/thefalgbusstop/data/network/ApiConstants.kt,4/8/
 Oapp/src/main/java/com/example/thefalgbusstop/data/network/APIResponseService.kt,7/0/70b37c12846afe8ccc178ed8450fe2a48be60e4b
 œ
 lapp/src/main/java/com/example/thefalgbusstop/presentation/Fragments/Chofers/Detail/ChofersDetailViewModel.kt,d/3/d3d87309968efd98397797382204e8101fde6026
-o
-?app/src/main/java/com/example/thefalgbusstop/domain/Entities.kt,9/2/92a245363e2e646b6435eab3e6d2a39589ba8fb3
 w
 Gapp/src/main/java/com/example/thefalgbusstop/data/network/APIRequest.kt,2/2/2240a895ab9f3ef436bf81553bbc12fbda0dc783
 x
@@ -93,3 +91,17 @@ Zapp/src/main/java/com/example/thefalgbusstop/presentation/Activities/ItemDetail
 Xapp/src/main/java/com/example/thefalgbusstop/presentation/Activities/EditItemActivity.kt,5/a/5af18e9f9de7980d0aec50108e3427c872dea30e
 “
 capp/src/main/java/com/example/thefalgbusstop/presentation/Activities/ItemDetailActivityViewModel.kt,c/d/cd5a4e4c934a4ec2e8028543fc6d771c3845487a
+|
+Lapp/src/main/java/com/example/thefalgbusstop/parcelables/ParcelableMapper.kt,f/a/fa09eb8c2e016f676ad8d9f7c1e064db8088825a
+~
+Napp/src/main/java/com/example/thefalgbusstop/parcelables/ParcelableEntities.kt,1/e/1e6a96dfd59e601e09573e2e02c43ef7eccc149f
+|
+Lapp/src/main/java/com/example/thefalgbusstop/data/services/ChofersListArr.kt,3/a/3a3467e86714280137323314dee7380d4d183868
+€
+Papp/src/main/java/com/example/thefalgbusstop/data/services/ChofersListArrItem.kt,c/e/cee4e2401663ce674e512ab1300d4423713ec89e
+s
+Capp/src/main/java/com/example/thefalgbusstop/domain/responsePojo.kt,f/e/fe3c52166a0c181877416aaac5edf733d907fda4
+{
+Kapp/src/main/java/com/example/thefalgbusstop/data/network/APIResponseMsg.kt,1/d/1d5c1650b6edb878ff36a9b3fb54a6c839368201
+o
+?app/src/main/java/com/example/thefalgbusstop/Utils/Cosntants.kt,7/1/71e996be1c78b7b576f1dd20524ede904eeb2927

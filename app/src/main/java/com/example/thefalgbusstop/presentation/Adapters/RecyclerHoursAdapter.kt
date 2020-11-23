@@ -3,9 +3,9 @@ package com.example.thefalgbusstop.presentation.Adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thefalgbusstop.R
-import com.example.thefalgbusstop.Utils.bindingInflate
+import com.example.thefalgbusstop.utils.bindingInflate
 import com.example.thefalgbusstop.databinding.HourItemBinding
-import com.example.thefalgbusstop.domain.Horarios
+import com.example.thefalgbusstop.domain.entities.Horarios
 
 class RecyclerHoursAdapter(
     private val listener: (Horarios) -> Unit

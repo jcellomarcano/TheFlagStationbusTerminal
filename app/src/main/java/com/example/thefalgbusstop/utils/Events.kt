@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.Utils
+package com.example.thefalgbusstop.utils
 
 data class Event<out T>(private val content: T) {
 

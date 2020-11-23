@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.Utils
+package com.example.thefalgbusstop.utils
 
 import android.app.Activity
 import android.content.Context

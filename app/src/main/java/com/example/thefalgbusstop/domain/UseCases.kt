@@ -1,9 +1,10 @@
 package com.example.thefalgbusstop.domain
 
 import com.example.thefalgbusstop.data.repositories.*
+import com.example.thefalgbusstop.domain.entities.*
 import io.reactivex.Single
 
-class GetAllChofersUseCase(
+class  ChofersUseCase(
         private val choferRepository: ChoferRepository
 ) {
 
@@ -11,6 +12,10 @@ class GetAllChofersUseCase(
             choferRepository.getAllChofers()
 
     fun invoke(Id: Int): Single<Chofer> = choferRepository.getChoferRepo(Id)
+
+    fun invokeDelete(id: Int) = choferRepository.deleteChofer(id)
+
+    fun invokeCreate(chofer: ChoferPost):Single<responsePojo> = choferRepository.createChofer(chofer)
 }
 
 class GetAllBusUseCase(

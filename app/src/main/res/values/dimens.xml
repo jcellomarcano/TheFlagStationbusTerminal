@@ -3,4 +3,5 @@
     <dimen name="list_item_padding">12dp</dimen>
     <dimen name="character_detail_location_height">108dp</dimen>
     <dimen name="character_list_item_size">160dp</dimen>
+    <dimen name="margin_top_logo">8dp</dimen>
 </resources>

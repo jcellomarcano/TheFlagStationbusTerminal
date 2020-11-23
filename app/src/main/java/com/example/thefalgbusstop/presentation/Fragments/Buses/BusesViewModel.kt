@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-import com.example.thefalgbusstop.Utils.Event
-import com.example.thefalgbusstop.domain.Bus
+import com.example.thefalgbusstop.utils.Event
+import com.example.thefalgbusstop.domain.entities.Bus
 import com.example.thefalgbusstop.domain.GetAllBusUseCase
+import com.example.thefalgbusstop.presentation.Fragments.Buses.BusesViewModel.BusListNavigation.*
 import io.reactivex.disposables.CompositeDisposable
 
 class BusesViewModel(
@@ -41,7 +42,7 @@ class BusesViewModel(
 
     fun onRetryGetAllBus(itemCount: Int) {
         if (itemCount > 0) {
-            _events.value = Event(BusListNavigation.HideLoading)
+            _events.value = Event(HideLoading)
             return
         }
 
@@ -57,13 +58,12 @@ class BusesViewModel(
                 if (BusList.size < PAGE_SIZE) {
                     isLastPage = true
                 }
-
                     hideLoading()
-                    _events.value = Event(BusListNavigation.ShowBusList(BusList))
+                    _events.value = Event(ShowBusList(BusList))
                 }, { error ->
                 isLastPage = true
                     hideLoading()
-                    _events.value = Event(BusListNavigation.ShowBusError(error))
+                    _events.value = Event(ShowBusError(error))
                 })
         )
     }
@@ -84,12 +84,12 @@ class BusesViewModel(
 
     private fun showLoading() {
         isLoading = true
-        _events.value = Event(BusListNavigation.ShowLoading)
+        _events.value = Event(ShowLoading)
     }
 
     private fun hideLoading() {
         isLoading = false
-        _events.value = Event(BusListNavigation.HideLoading)
+        _events.value = Event(HideLoading)
     }
 
     //endregion
@@ -110,7 +110,7 @@ class BusesViewModel(
     //region Companion Object
 
     companion object {
-        private const val PAGE_SIZE = 7
+        private const val PAGE_SIZE = 20
     }
 
     //endregion

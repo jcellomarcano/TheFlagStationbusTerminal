@@ -5,7 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.thefalgbusstop.R
-import com.example.thefalgbusstop.Utils.*
+import com.example.thefalgbusstop.utils.*
 import com.example.thefalgbusstop.data.*
 import com.example.thefalgbusstop.data.network.ApiConstants.BASE_API_URL
 import com.example.thefalgbusstop.data.network.BusRequest
@@ -15,14 +15,15 @@ import com.example.thefalgbusstop.data.network.PassengerRequest
 import com.example.thefalgbusstop.data.repositories.ChoferRepository
 import com.example.thefalgbusstop.data.repositories.PassengerRepository
 import com.example.thefalgbusstop.databinding.ActivityItemDetailBinding
-import com.example.thefalgbusstop.domain.Chofer
+import com.example.thefalgbusstop.domain.entities.Chofer
 import com.example.thefalgbusstop.parcelables.ChoferParcelable
 import com.example.thefalgbusstop.parcelables.toChoferDomain
 import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
 import com.example.thefalgbusstop.presentation.Activities.ItemDetailActivityViewModel.UserDetailNavigation
 import com.example.thefalgbusstop.presentation.Activities.ItemDetailActivityViewModel.UserDetailNavigation.*
-
 import androidx.lifecycle.Observer
+import com.example.thefalgbusstop.domain.ChofersUseCase
+import kotlinx.android.synthetic.main.activity_item_detail.*
 
 class ItemDetailActivity : AppCompatActivity() {
 
@@ -66,13 +67,18 @@ class ItemDetailActivity : AppCompatActivity() {
         AgencyDataSource(AgencyDatabase.getDatabase(applicationContext))
     }
 
-    private val choferRepository: ChoferRepository by lazy {
+    val choferRepository: ChoferRepository by lazy {
         ChoferRepository(remoteChoferDataSource, localAgencyDataSource)
+    }
+
+    private val chofersUseCase: ChofersUseCase by lazy {
+        ChofersUseCase(choferRepository)
     }
 
     private val itemDetailActivityViewModel: ItemDetailActivityViewModel by lazy {
         getViewModel {
             ItemDetailActivityViewModel(
+                null,
                 intent.getParcelableExtra<ChoferParcelable>(Cosntants.EXTRA_CHOFER)?.toChoferDomain()
             )
         }
@@ -81,16 +87,18 @@ class ItemDetailActivity : AppCompatActivity() {
 
     //endChofer
 
-
-
     //end Fields
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initComponent()
+    }
+
+    private fun initComponent(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_item_detail)
         binding.lifecycleOwner = this@ItemDetailActivity
-
+        deleteBtn.setOnClickListener { itemDetailActivityViewModel.deleteChofer(this@ItemDetailActivity) }
+        editBtn.setOnClickListener {itemDetailActivityViewModel.openEditChofer(this@ItemDetailActivity)}
         itemDetailActivityViewModel.choferValues.observe(this, Observer(this::loadChofer))
         itemDetailActivityViewModel.events.observe(this, Observer(this::validateEvents))
         itemDetailActivityViewModel.onUserValidation()
@@ -101,7 +109,6 @@ class ItemDetailActivity : AppCompatActivity() {
             onBackPressed()
             return true
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -112,11 +119,14 @@ class ItemDetailActivity : AppCompatActivity() {
             errorPlaceholder = R.drawable.ic_broken_image_black
         )
         binding.nameEntity = chofer.fullname
-        binding.descId = "Chofer"
+        binding.descId = chofer.rut
         binding.idEntity = chofer.id.toString()
         binding.addInfo1 = chofer.rut
 
     }
+
+
+
 
     private fun validateEvents(event: Event<UserDetailNavigation>?) {
         event?.getContentIfNotHandled()?.let { navigation ->
@@ -127,10 +137,6 @@ class ItemDetailActivity : AppCompatActivity() {
                 CloseActivity -> {
                     this@ItemDetailActivity.showLongToast(R.string.error_no_character_data)
                     finish()
-                }
-                HideEpisodeListLoading -> {
-                }
-                ShowEpisodeListLoading -> {
                 }
             }
         }

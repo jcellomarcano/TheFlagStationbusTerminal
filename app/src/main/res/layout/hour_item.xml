@@ -6,7 +6,7 @@
     <data>
         <variable
         name="hours"
-        type="com.example.thefalgbusstop.domain.Horarios"/>
+        type="com.example.thefalgbusstop.domain.entities.Horarios"/>
     </data>
     <FrameLayout
         android:layout_width="match_parent"

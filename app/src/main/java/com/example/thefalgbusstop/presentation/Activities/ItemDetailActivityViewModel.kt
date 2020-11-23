@@ -1,17 +1,29 @@
 package com.example.thefalgbusstop.presentation.Activities
 
+import android.app.Activity
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.thefalgbusstop.Utils.Event
-import com.example.thefalgbusstop.domain.Chofer
-import com.example.thefalgbusstop.domain.Passenger
+import cn.pedant.SweetAlert.SweetAlertDialog
+import com.example.thefalgbusstop.R
+import com.example.thefalgbusstop.utils.Cosntants
+import com.example.thefalgbusstop.utils.Event
+import com.example.thefalgbusstop.utils.startActivity
+import com.example.thefalgbusstop.domain.entities.Chofer
+import com.example.thefalgbusstop.domain.entities.ChoferPost
+import com.example.thefalgbusstop.domain.entities.Passenger
+import com.example.thefalgbusstop.parcelables.toChoferParcelable
+import com.example.thefalgbusstop.presentation.Activities.ItemDetailActivityViewModel.UserDetailNavigation.CloseActivity
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import io.reactivex.disposables.CompositeDisposable
-import com.example.thefalgbusstop.presentation.Activities.ItemDetailActivityViewModel.UserDetailNavigation.*
 
-class ItemDetailActivityViewModel (
+
+class ItemDetailActivityViewModel(
+    private val passenger: Passenger? = null,
     private val chofer: Chofer? = null,
-    private val passenger: Passenger? = null): ViewModel(){
+): ViewModel(){
 
     private val disposable = CompositeDisposable()
 
@@ -46,22 +58,58 @@ class ItemDetailActivityViewModel (
         else
             _events.value = Event(CloseActivity)
     }
+
+    fun addChofer(activity: ItemDetailActivityViewModel) {
+
+    }
+
+
+
+    fun deleteChofer(activity: ItemDetailActivity) {
+        SweetAlertDialog(activity, SweetAlertDialog.WARNING_TYPE)
+            .setTitleText("Are you sure?")
+            .setContentText("Won't be able to recover this file!")
+            .setConfirmText("Yes,delete it!")
+            .setConfirmClickListener { sDialog ->
+                sDialog.dismissWithAnimation()
+                if (chofer != null) {
+//                    activity.choferRepository.deleteChofer(chofer.id)
+                    val gson = Gson()
+                    val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+                    val newChofer = ChoferPost(
+                        "Manolo",
+                        "Suarez",
+                        "1928374-6"
+                    )
+                    val jsonNewChofer: String = gson.toJson(newChofer)
+                    Log.i("ViewItemModel", "deleteChofer: $jsonNewChofer")
+                    val jsonNewChoferPretty: String = gsonPretty.toJson(newChofer)
+                    Log.i("ViewItemModel", "deleteChofer: $jsonNewChoferPretty")
+
+                    activity.choferRepository.createChofer(newChofer)
+                }
+            }
+            .show()
+    }
+
+    fun openEditChofer(activity: Activity) {
+        activity.startActivity<EditItemActivity> {
+            putExtra(Cosntants.EXTRA_CHOFER, chofer?.toChoferParcelable())
+        }
+        activity.overridePendingTransition(R.anim.entry, R.anim.exit)
+    }
     //end PubMeth
 
 
     //privateMeth
-    private fun getSit(passengerID: Int){
 
-    }
 
-    private fun getBus(choferID: Int){
 
-    }
-
-    private fun getHour(){
-
-    }
     //end PrivateMeth
+
+
+
+
 
 
 
@@ -70,8 +118,8 @@ class ItemDetailActivityViewModel (
     sealed class UserDetailNavigation {
         data class ShowEpisodeError(val error: Throwable) : UserDetailNavigation()
         object CloseActivity : UserDetailNavigation()
-        object HideEpisodeListLoading : UserDetailNavigation()
-        object ShowEpisodeListLoading : UserDetailNavigation()
+//        object HideEpisodeListLoading : UserDetailNavigation()
+//        object ShowEpisodeListLoading : UserDetailNavigation()
     }
 
     //endregion

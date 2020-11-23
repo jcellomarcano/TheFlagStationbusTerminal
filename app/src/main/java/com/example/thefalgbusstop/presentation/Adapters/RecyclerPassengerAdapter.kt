@@ -3,9 +3,9 @@ package com.example.thefalgbusstop.presentation.Adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thefalgbusstop.R
-import com.example.thefalgbusstop.Utils.bindingInflate
+import com.example.thefalgbusstop.utils.bindingInflate
 import com.example.thefalgbusstop.databinding.PassengerItemBinding
-import com.example.thefalgbusstop.domain.Passenger
+import com.example.thefalgbusstop.domain.entities.Passenger
 
 class RecyclerPassengerAdapter(
     private val listener: (Passenger) -> Unit

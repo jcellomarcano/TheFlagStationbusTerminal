@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.Utils
+package com.example.thefalgbusstop.utils
 
 import android.widget.ImageView
 import androidx.annotation.DrawableRes

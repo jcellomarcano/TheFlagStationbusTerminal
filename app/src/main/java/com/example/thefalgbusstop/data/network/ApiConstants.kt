@@ -4,13 +4,13 @@ object ApiConstants {
     const val BASE_API_URL = "http://testing.destacame.cl"
     const val API_KEY = "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiamVzdXNfbWFyY2FuMCIsInBhc3MiOiJKZXN1c19NNHJjYW5vIn0.91qNc-pP_wdInRjevVK6_83jn2ju9nC7aNBshw2YMSY"
 
-    const val ENDPOINT_CHOFER = "chofer/"
-    const val ENDPOINT_SIT = "asiento/"
-    const val ENDPOINT_PASSENGER = "pasajero/"
-    const val ENDPOINT_TIME = "horario/"
-    const val ENDPOINT_ROUTE = "trayecto/"
-    const val ENDPOINT_BUS = "bus/"
-    const val ENDPOINT_ALL = "all"
+    const val ENDPOINT_CHOFER = "chofer"
+    const val ENDPOINT_SIT = "asiento"
+    const val ENDPOINT_PASSENGER = "pasajero"
+    const val ENDPOINT_TIME = "horario"
+    const val ENDPOINT_ROUTE = "trayecto"
+    const val ENDPOINT_BUS = "bus"
+    const val ENDPOINT_ALL = "/all"
 
     const val KEY_NAME = "nombre"
     const val KEY_LASTNAME = "apellido"
@@ -28,6 +28,8 @@ object ApiConstants {
     const val KEY_HORA = "hora"
     const val KEY_ID_ROUTE = "id_trayecto"
     const val KEY_ID = "id"
+
+    const val KEY_MESSAGE_RESPONSE = "message"
 
 
     const val KEY_RESULTS = "response"

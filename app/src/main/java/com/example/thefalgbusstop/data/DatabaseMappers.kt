@@ -1,6 +1,6 @@
 package com.example.thefalgbusstop.data
 
-import com.example.thefalgbusstop.domain.Chofer
+import com.example.thefalgbusstop.domain.entities.Chofer
 
 fun List<ChoferEntity>.toChoferDomainList() = map(ChoferEntity::toChoferDomain)
 

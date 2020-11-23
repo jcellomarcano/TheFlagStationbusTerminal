@@ -6,7 +6,7 @@
     <data>
         <variable
             name="passenger"
-            type="com.example.thefalgbusstop.domain.Passenger" />
+            type="com.example.thefalgbusstop.domain.entities.Passenger" />
 
     </data>
     <FrameLayout
