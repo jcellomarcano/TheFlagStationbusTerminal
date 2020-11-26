@@ -3,13 +3,12 @@ package com.example.thefalgbusstop.data.repositories
 import android.util.Log
 import com.example.thefalgbusstop.data.*
 import com.example.thefalgbusstop.domain.entities.*
-import io.reactivex.Maybe
 import io.reactivex.Single
 
 
 class ChoferRepository(
     private val remoteChoferDataSource: RemoteChoferDataSource,
-    private val localAgencyyDataSource: LocalAgencyDataSource,
+    private val localAgencyDataSource: LocalAgencyDataSource,
 ) {
 
     //region Public Methods
@@ -18,21 +17,20 @@ class ChoferRepository(
         remoteChoferDataSource.getAllChofers()
 
     fun getChofer(choferId: Int): String =
-        localAgencyyDataSource.getChofer(choferId).toString()
+        localAgencyDataSource.getChofer(choferId).toString()
 
     fun getChoferRepo(choferId: Int): Single<Chofer> =
         remoteChoferDataSource.getChoferRepo(choferId)
 
-    fun getFavoriteChoferStatus(choferId: Int): Maybe<Boolean> =
-        localAgencyyDataSource.getFavoriteChoferStatus(choferId)
+    fun updateChoferRepo(chofer: ChoferUpdate, id: Int): Single<responsePojo> =
+        remoteChoferDataSource.updateChofer(chofer, id)
 
     fun createChofer(chofer: ChoferPost): Single<responsePojo> =
         remoteChoferDataSource.createChofer(chofer)
 
-    fun deleteChofer(id: Int) {
+    fun deleteChofer(id: Int): Single<responsePojo> =
         remoteChoferDataSource.deleteChofer(id)
-        Log.i("Repository", "deleteChofer: " + remoteChoferDataSource.deleteChofer(id))
-    }
+
 
     //endregion
 }

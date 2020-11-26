@@ -33,34 +33,25 @@ class ChoferRetrofitDataSource(
         TODO("Not yet implemented")
     }
 
-    override fun deleteChofer(id: Int) {
+    override fun deleteChofer(id: Int): Single<responsePojo> {
         return choferRequest
             .getService<ChoferService>()
-            .deleteChoferAlt(API_KEY = API_KEY, id)
-            .enqueue(object : Callback<responsePojo> {
-                override fun onResponse(
-                    call: Call<responsePojo>,
-                    response: Response<responsePojo>,
-                ) {
-                    if (!response.isSuccessful) {
-                        Log.i("data Source", "onResponse: ${response.code()}")
-
-                        return
-                    } else {
-                        Log.i("data Source", "onResponse: ${response.body()}")
-                        return
-                    }
-                }
-                override fun onFailure(call: Call<responsePojo>, t: Throwable) {
-                    Log.i("data Source", "onFailure: ${t.message}")
-                    return
-                }
-
-            })
+            .deleteChofer(API_KEY = API_KEY, id)
+            .map(responsePojoServer::toDomainResponsePojo)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
     }
 
-    override fun updateChofer(id: Int): Any {
-        TODO("Not yet implemented")
+    override fun updateChofer(chofer: ChoferUpdate, id: Int): Single<responsePojo> {
+        return choferRequest
+            .getService<ChoferService>()
+            .updateChofer(
+                API_KEY = API_KEY,
+                id = id,
+                chofer = chofer)
+            .map(responsePojoServer::toDomainResponsePojo)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
     }
 
     override fun createChofer(chofer: ChoferPost): Single<responsePojo> {

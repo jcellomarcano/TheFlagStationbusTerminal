@@ -13,7 +13,9 @@ class  ChofersUseCase(
 
     fun invoke(Id: Int): Single<Chofer> = choferRepository.getChoferRepo(Id)
 
-    fun invokeDelete(id: Int) = choferRepository.deleteChofer(id)
+    fun invokeDelete(id: Int): Single<responsePojo> = choferRepository.deleteChofer(id)
+
+    fun invokeUpdate(chofer: ChoferUpdate, id: Int): Single<responsePojo> = choferRepository.updateChoferRepo(chofer, id)
 
     fun invokeCreate(chofer: ChoferPost):Single<responsePojo> = choferRepository.createChofer(chofer)
 }

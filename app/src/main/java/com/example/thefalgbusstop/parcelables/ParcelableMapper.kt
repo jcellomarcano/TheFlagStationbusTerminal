@@ -14,9 +14,9 @@ fun ChoferParcelable.toChoferDomain() = Chofer(
 
 fun Chofer.toChoferParcelable() = ChoferParcelable(
     id,
-    name,
+    nombre,
     rut,
-    lastname,
+    apellido,
 
 )
 

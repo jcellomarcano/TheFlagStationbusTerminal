@@ -7,7 +7,9 @@ import com.example.thefalgbusstop.data.network.ApiConstants.ENDPOINT_CHOFER
 import com.example.thefalgbusstop.data.network.ApiConstants.ENDPOINT_PASSENGER
 import com.example.thefalgbusstop.data.network.ApiConstants.ENDPOINT_SIT
 import com.example.thefalgbusstop.data.network.ApiConstants.ENDPOINT_TIME
+import com.example.thefalgbusstop.domain.entities.Chofer
 import com.example.thefalgbusstop.domain.entities.ChoferPost
+import com.example.thefalgbusstop.domain.entities.ChoferUpdate
 import com.example.thefalgbusstop.domain.entities.responsePojo
 import io.reactivex.Single
 import retrofit2.Call
@@ -39,22 +41,15 @@ interface ChoferService {
     fun updateChofer(
         @Header("Authorization") API_KEY: String,
         @Path("id") id: Int,
-        @Field("nombre") nombre: String,
-        @Field("apellido") apellido: String,
-        @Field("rut") rut: String,
-    ): Single<ChoferServer>
+        @Body chofer: ChoferUpdate,
+    ): Single<responsePojoServer>
 
     @DELETE("$ENDPOINT_CHOFER/{id}")
     fun deleteChofer(
         @Header("Authorization") API_KEY: String,
         @Path("id") id: Int,
-    ): Single<String>
+    ): Single<responsePojoServer>
 
-    @DELETE("$ENDPOINT_CHOFER/{id}")
-    fun deleteChoferAlt(
-        @Header("Authorization") API_KEY: String,
-        @Path("id") id: Int,
-    ): Call<responsePojo>
 
 }
 

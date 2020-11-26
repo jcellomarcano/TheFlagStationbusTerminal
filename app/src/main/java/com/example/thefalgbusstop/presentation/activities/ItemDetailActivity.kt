@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.presentation.Activities
+package com.example.thefalgbusstop.presentation.activities
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -19,8 +19,8 @@ import com.example.thefalgbusstop.domain.entities.Chofer
 import com.example.thefalgbusstop.parcelables.ChoferParcelable
 import com.example.thefalgbusstop.parcelables.toChoferDomain
 import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
-import com.example.thefalgbusstop.presentation.Activities.ItemDetailActivityViewModel.UserDetailNavigation
-import com.example.thefalgbusstop.presentation.Activities.ItemDetailActivityViewModel.UserDetailNavigation.*
+import com.example.thefalgbusstop.presentation.activities.ItemDetailActivityViewModel.UserDetailNavigation
+import com.example.thefalgbusstop.presentation.activities.ItemDetailActivityViewModel.UserDetailNavigation.*
 import androidx.lifecycle.Observer
 import com.example.thefalgbusstop.domain.ChofersUseCase
 import kotlinx.android.synthetic.main.activity_item_detail.*
@@ -79,7 +79,8 @@ class ItemDetailActivity : AppCompatActivity() {
         getViewModel {
             ItemDetailActivityViewModel(
                 null,
-                intent.getParcelableExtra<ChoferParcelable>(Cosntants.EXTRA_CHOFER)?.toChoferDomain()
+                intent.getParcelableExtra<ChoferParcelable>(Cosntants.EXTRA_CHOFER)?.toChoferDomain(),
+                chofersUseCase
             )
         }
     }
@@ -97,7 +98,7 @@ class ItemDetailActivity : AppCompatActivity() {
     private fun initComponent(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_item_detail)
         binding.lifecycleOwner = this@ItemDetailActivity
-        deleteBtn.setOnClickListener { itemDetailActivityViewModel.deleteChofer(this@ItemDetailActivity) }
+        deleteBtn.setOnClickListener { itemDetailActivityViewModel.showWarningDialog(this@ItemDetailActivity) }
         editBtn.setOnClickListener {itemDetailActivityViewModel.openEditChofer(this@ItemDetailActivity)}
         itemDetailActivityViewModel.choferValues.observe(this, Observer(this::loadChofer))
         itemDetailActivityViewModel.events.observe(this, Observer(this::validateEvents))
@@ -114,11 +115,11 @@ class ItemDetailActivity : AppCompatActivity() {
 
     private fun loadChofer(chofer: Chofer){
         binding.characterImage.bindCircularImageUrl(
-            url = chofer.profileImg,
+            url = chofer.imgPerfil,
             placeholder = R.drawable.ic_camera_alt_black,
             errorPlaceholder = R.drawable.ic_broken_image_black
         )
-        binding.nameEntity = chofer.fullname
+        binding.nameEntity = chofer.nombreCompleto
         binding.descId = chofer.rut
         binding.idEntity = chofer.id.toString()
         binding.addInfo1 = chofer.rut

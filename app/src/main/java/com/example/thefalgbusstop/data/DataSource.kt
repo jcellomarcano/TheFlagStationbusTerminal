@@ -9,8 +9,8 @@ import io.reactivex.Single
 interface RemoteChoferDataSource {
     fun getAllChofers(): Single<List<Chofer>>
     fun getChoferRepo(id: Int): Single<Chofer>
-    fun deleteChofer(id: Int): Any
-    fun updateChofer(id: Int): Any
+    fun deleteChofer(id: Int): Single<responsePojo>
+    fun updateChofer(chofer: ChoferUpdate, id: Int): Single<responsePojo>
     fun createChofer(chofer: ChoferPost):Single<responsePojo>
 }
 interface RemoteBusDataSource {

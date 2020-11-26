@@ -27,7 +27,7 @@ object Utils {
         pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
         pDialog.titleText = title
         pDialog.setCancelable(false)
-        pDialog.show()
+//        pDialog.show()
         return pDialog
     }
 
@@ -39,7 +39,7 @@ object Utils {
         return cDialog
     }
 
-    fun ErrorAlertDialog(
+    fun errorAlertDialog(
         context: Context, title: String, content: String,
         confirm_button_text: String,
         is_cancellable: Boolean, show_cancel_button: Boolean,

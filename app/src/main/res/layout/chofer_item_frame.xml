@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:text="@{chofer.fullname}"
+                        android:text="@{chofer.nombreCompleto}"
                         app:layout_constraintStart_toEndOf="@+id/profilePic"
                         app:layout_constraintTop_toTopOf="@+id/profilePic" />
 

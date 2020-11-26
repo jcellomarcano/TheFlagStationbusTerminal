@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.presentation.Activities
+package com.example.thefalgbusstop.presentation.activities
 
 import android.os.Bundle
 import android.util.Log
