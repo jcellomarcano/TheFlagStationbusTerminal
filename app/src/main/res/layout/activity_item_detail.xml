@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="nameEntity"
+            type="String" />
+        <variable
+            name="idEntity"
+            type="String" />
+        <variable
+            name="descId"
+            type="String" />
+        <variable
+            name="addInfo1"
+            type="String" />
+        <variable
+            name="addInfo2"
+            type="String" />
+        <variable
+            name="addInfo3"
+            type="String" />
+        <variable
+            name="pageTitle"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.activities.ItemDetailActivity">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBack">
+            <!-- Character Detail Section -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardElevation="5dp"
+                card_view:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/characterImage"
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/content_description_character_detail_image"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:src="@drawable/ic_camera_alt_black" />
+
+                        <TextView
+                            android:id="@+id/characterName"
+                            style="@style/CharacterDetailSectionName"
+                            android:gravity="center"
+                            android:text="@{nameEntity}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/characterImage"
+                            tools:text="Rick Sanchez" />
+
+                        <TextView
+                            android:id="@+id/characterStatusLabel"
+                            style="@style/CharacterDetailHeaderSectionTitle"
+                            android:text="@string/section_status"
+                            app:layout_constraintEnd_toStartOf="@id/characterSpeciesLabel"
+                            app:layout_constraintHorizontal_chainStyle="spread"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/characterName" />
+
+                        <TextView
+                            android:id="@+id/characterSpeciesLabel"
+                            style="@style/CharacterDetailHeaderSectionTitle"
+                            android:text="@string/section_species"
+                            app:layout_constraintEnd_toStartOf="@id/characterGenderLabel"
+                            app:layout_constraintStart_toEndOf="@id/characterStatusLabel"
+                            app:layout_constraintTop_toBottomOf="@id/characterName" />
+
+                        <TextView
+                            android:id="@+id/characterGenderLabel"
+                            style="@style/CharacterDetailHeaderSectionTitle"
+                            android:text="@string/section_gender"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/characterSpeciesLabel"
+                            app:layout_constraintTop_toBottomOf="@id/characterName" />
+
+                        <TextView
+                            style="@style/CharacterDetailHeaderSectionBody"
+                            android:text="@{idEntity}"
+                            app:layout_constraintEnd_toEndOf="@id/characterStatusLabel"
+                            app:layout_constraintStart_toStartOf="@id/characterStatusLabel"
+                            app:layout_constraintTop_toBottomOf="@id/characterStatusLabel"
+                            tools:text="1" />
+
+                        <TextView
+                            style="@style/CharacterDetailHeaderSectionBody"
+                            android:text="@{descId}"
+                            app:layout_constraintEnd_toEndOf="@id/characterSpeciesLabel"
+                            app:layout_constraintStart_toStartOf="@id/characterSpeciesLabel"
+                            app:layout_constraintTop_toBottomOf="@id/characterSpeciesLabel"
+                            tools:text="12345678-0" />
+
+                        <TextView
+                            style="@style/CharacterDetailHeaderSectionBody"
+                            android:text="@{idEntity}"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toEndOf="@id/characterGenderLabel"
+                            app:layout_constraintStart_toStartOf="@id/characterGenderLabel"
+                            app:layout_constraintTop_toBottomOf="@id/characterGenderLabel"
+                            tools:text="Male" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/parentOrigin"
+                    style="@style/CharacterDetailLocationSectionCard"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/character_detail_location_height"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/parentLocation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/CharacterDetailSectionTitle"
+                            android:text="@string/section_origin" />
+
+                        <TextView
+                            style="@style/CharacterDetailLocationSectionBody"
+                            android:text="@{addInfo1}"
+                            tools:text="Earth" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/parentLocation"
+                    style="@style/CharacterDetailLocationSectionCard"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/character_detail_location_height"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/parentOrigin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/CharacterDetailSectionTitle"
+                            android:text="@string/section_location" />
+
+                        <TextView
+                            style="@style/CharacterDetailLocationSectionBody"
+                            android:text="@{addInfo2}"
+                            tools:text="Asiento" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/editBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/edit_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/deleteBtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/delete_btn"
+            app:layout_constraintBottom_toBottomOf="@id/editBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/editBtn"
+            app:layout_constraintTop_toTopOf="@id/editBtn" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/margin_top_logo"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/ic_back_arrow_"
+            android:drawablePadding="-16dp"
+            android:paddingStart="4dp"
+            android:textAllCaps="false"
+            android:textColor="@color/grey_subtitle_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{pageTitle, default=Titulo}"
+            android:textColor="@color/grey_title_color"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
