@@ -162,19 +162,19 @@ class EditItemActivity : AppCompatActivity() {
     }
 
     private fun validate(): Boolean{
-       if (edtTextString1 == null){
+       if (edtTextString1.text == null){
            edtTextString1.error = "Campo vacío"
            return false
        } else {
            edtTextString1.error = null
        }
-        if (editTextString2 == null){
+        if (editTextString2.text == null){
             editTextString2.error = "Campo vacío"
            return false
        } else {
             editTextString2.error = null
        }
-        if (edtTextString3 == null){
+        if (edtTextString3.text == null){
             edtTextString3.error = "Campo vacío"
            return false
        } else {
