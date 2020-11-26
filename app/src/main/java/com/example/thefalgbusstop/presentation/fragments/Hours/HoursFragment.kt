@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.presentation.Fragments.Hours
+package com.example.thefalgbusstop.presentation.fragments.Hours
 
 import android.content.Context
 import android.os.Bundle
@@ -25,7 +25,7 @@ import com.example.thefalgbusstop.databinding.HoursFragmentBinding
 import com.example.thefalgbusstop.domain.GetAllHorariosUseCase
 import com.example.thefalgbusstop.domain.entities.Horarios
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerHoursAdapter
-import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
+import com.example.thefalgbusstop.presentation.fragments.Buses.AgencyDataSource
 import kotlinx.android.synthetic.main.buses_fragment.*
 import kotlinx.android.synthetic.main.hours_fragment.*
 
@@ -140,7 +140,7 @@ class HoursFragment : Fragment() {
         hoursViewModel.onGetAllHours()
     }
     private fun validateEvents(event: Event<HoursViewModel.HoursListNavigation>) {
-        event?.getContentIfNotHandled()?.let { navigation ->
+        event.getContentIfNotHandled()?.let { navigation ->
             when (navigation) {
                 is HoursViewModel.HoursListNavigation.ShowHoursError -> navigation.run {
                     context?.showLongToast("Error -> ${error.message}")

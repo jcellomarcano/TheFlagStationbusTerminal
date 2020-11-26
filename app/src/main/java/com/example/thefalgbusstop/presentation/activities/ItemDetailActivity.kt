@@ -18,12 +18,14 @@ import com.example.thefalgbusstop.databinding.ActivityItemDetailBinding
 import com.example.thefalgbusstop.domain.entities.Chofer
 import com.example.thefalgbusstop.parcelables.ChoferParcelable
 import com.example.thefalgbusstop.parcelables.toChoferDomain
-import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
+import com.example.thefalgbusstop.presentation.fragments.Buses.AgencyDataSource
 import com.example.thefalgbusstop.presentation.activities.ItemDetailActivityViewModel.UserDetailNavigation
 import com.example.thefalgbusstop.presentation.activities.ItemDetailActivityViewModel.UserDetailNavigation.*
 import androidx.lifecycle.Observer
 import com.example.thefalgbusstop.domain.ChofersUseCase
+import kotlinx.android.synthetic.main.activity_edit_item.*
 import kotlinx.android.synthetic.main.activity_item_detail.*
+import kotlinx.android.synthetic.main.activity_item_detail.btnBack
 
 class ItemDetailActivity : AppCompatActivity() {
 
@@ -100,6 +102,7 @@ class ItemDetailActivity : AppCompatActivity() {
         binding.lifecycleOwner = this@ItemDetailActivity
         deleteBtn.setOnClickListener { itemDetailActivityViewModel.showWarningDialog(this@ItemDetailActivity) }
         editBtn.setOnClickListener {itemDetailActivityViewModel.openEditChofer(this@ItemDetailActivity)}
+        btnBack.setOnClickListener { onBackPressed() }
         itemDetailActivityViewModel.choferValues.observe(this, Observer(this::loadChofer))
         itemDetailActivityViewModel.events.observe(this, Observer(this::validateEvents))
         itemDetailActivityViewModel.onUserValidation()
@@ -119,6 +122,7 @@ class ItemDetailActivity : AppCompatActivity() {
             placeholder = R.drawable.ic_camera_alt_black,
             errorPlaceholder = R.drawable.ic_broken_image_black
         )
+        binding.pageTitle.text = "Detalle de chofer"
         binding.nameEntity = chofer.nombreCompleto
         binding.descId = chofer.rut
         binding.idEntity = chofer.id.toString()
@@ -132,7 +136,7 @@ class ItemDetailActivity : AppCompatActivity() {
     private fun validateEvents(event: Event<UserDetailNavigation>?) {
         event?.getContentIfNotHandled()?.let { navigation ->
             when (navigation) {
-                is ShowEpisodeError -> navigation.run {
+                is ShowError -> navigation.run {
                     this@ItemDetailActivity.showLongToast("Error -> ${error.message}")
                 }
                 CloseActivity -> {

@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.Fragments.Passengers.PassengersFragment">
+        tools:context=".presentation.fragments.Passengers.PassengersFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srwPassengerList"

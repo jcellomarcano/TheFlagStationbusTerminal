@@ -1,9 +1,7 @@
-package com.example.thefalgbusstop.presentation.Fragments.Buses
+package com.example.thefalgbusstop.presentation.fragments.Buses
 
 import com.example.thefalgbusstop.data.*
 import io.reactivex.Maybe
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 
 class AgencyDataSource(database: AgencyDatabase

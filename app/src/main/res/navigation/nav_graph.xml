@@ -6,7 +6,7 @@
     app:startDestination="@id/chofersFragment">
     <fragment
         android:id="@+id/chofersFragment"
-        android:name="com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListFragment"
+        android:name="com.example.thefalgbusstop.presentation.fragments.Chofers.List.ChoferListFragment"
         android:label="chofers_fragment"
         tools:layout="@layout/chofers_fragment">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/hoursFragment"
-        android:name="com.example.thefalgbusstop.presentation.Fragments.Hours.HoursFragment"
+        android:name="com.example.thefalgbusstop.presentation.fragments.Hours.HoursFragment"
         android:label="hours_fragment"
         tools:layout="@layout/hours_fragment">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/busesFragment"
-        android:name="com.example.thefalgbusstop.presentation.Fragments.Buses.BusesFragment"
+        android:name="com.example.thefalgbusstop.presentation.fragments.Buses.BusesFragment"
         android:label="buses_fragment"
         tools:layout="@layout/buses_fragment">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/passengersFragment"
-        android:name="com.example.thefalgbusstop.presentation.Fragments.Passengers.PassengersFragment"
+        android:name="com.example.thefalgbusstop.presentation.fragments.Passengers.PassengersFragment"
         android:label="passengers_fragment"
         tools:layout="@layout/passengers_fragment" />
 

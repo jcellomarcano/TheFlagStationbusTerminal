@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.presentation.Fragments.Chofers.Detail
+package com.example.thefalgbusstop.presentation.fragments.Chofers.Detail
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -11,7 +11,7 @@ import com.example.thefalgbusstop.data.*
 import com.example.thefalgbusstop.data.network.ApiConstants
 import com.example.thefalgbusstop.data.network.ChoferRequest
 import com.example.thefalgbusstop.data.repositories.ChoferRepository
-import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
+import com.example.thefalgbusstop.presentation.fragments.Buses.AgencyDataSource
 
 class ChofersDetailFragment : Fragment() {
 

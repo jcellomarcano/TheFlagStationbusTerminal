@@ -1,10 +1,10 @@
-package com.example.thefalgbusstop.presentation.Fragments.Chofers.List
+package com.example.thefalgbusstop.presentation.fragments.Chofers.List
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.thefalgbusstop.utils.Event
-import com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
+import com.example.thefalgbusstop.presentation.fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
 import com.example.thefalgbusstop.domain.entities.Chofer
 import com.example.thefalgbusstop.domain.ChofersUseCase
 import io.reactivex.disposables.CompositeDisposable

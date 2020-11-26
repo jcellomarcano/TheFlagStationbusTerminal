@@ -27,7 +27,7 @@ import com.example.thefalgbusstop.parcelables.ChoferParcelable
 import com.example.thefalgbusstop.parcelables.toChoferDomain
 import com.example.thefalgbusstop.presentation.activities.EditItemActivityViewModel.*
 import com.example.thefalgbusstop.presentation.activities.EditItemActivityViewModel.UserEditNavigation.*
-import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
+import com.example.thefalgbusstop.presentation.fragments.Buses.AgencyDataSource
 import com.example.thefalgbusstop.utils.Cosntants
 import com.example.thefalgbusstop.utils.Event
 import com.example.thefalgbusstop.utils.getViewModel

@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.presentation.Fragments.Chofers.List
+package com.example.thefalgbusstop.presentation.fragments.Chofers.List
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
@@ -24,9 +24,9 @@ import com.example.thefalgbusstop.data.repositories.ChoferRepository
 import com.example.thefalgbusstop.databinding.ChofersFragmentBinding
 import com.example.thefalgbusstop.domain.entities.Chofer
 import com.example.thefalgbusstop.domain.ChofersUseCase
-import  com.example.thefalgbusstop.presentation.Fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
+import  com.example.thefalgbusstop.presentation.fragments.Chofers.List.ChoferListViewModel.ChoferListNavigation.*
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerListAdapter
-import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
+import com.example.thefalgbusstop.presentation.fragments.Buses.AgencyDataSource
 import kotlinx.android.synthetic.main.chofers_fragment.*
 
 class ChoferListFragment : Fragment() {

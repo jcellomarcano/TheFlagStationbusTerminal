@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.presentation.Fragments.Buses
+package com.example.thefalgbusstop.presentation.fragments.Buses
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.thefalgbusstop.utils.Event
 import com.example.thefalgbusstop.domain.entities.Bus
 import com.example.thefalgbusstop.domain.GetAllBusUseCase
-import com.example.thefalgbusstop.presentation.Fragments.Buses.BusesViewModel.BusListNavigation.*
+import com.example.thefalgbusstop.presentation.fragments.Buses.BusesViewModel.BusListNavigation.*
 import io.reactivex.disposables.CompositeDisposable
 
 class BusesViewModel(

@@ -91,12 +91,7 @@ class ItemDetailActivityViewModel(
         }
         activity.overridePendingTransition(R.anim.entry, R.anim.exit)
     }
-
-
-
-
     //end PubMeth
-
 
     //privateMeth
     private fun successDelete(activity: ItemDetailActivity, message: String){
@@ -162,19 +157,12 @@ class ItemDetailActivityViewModel(
 
     //end PrivateMeth
 
-
-
-
-
-
-
     //region Inner Classes & Interfaces
 
     sealed class UserDetailNavigation {
-        data class ShowEpisodeError(val error: Throwable) : UserDetailNavigation()
+        data class ShowError(val error: Throwable) : UserDetailNavigation()
         object CloseActivity : UserDetailNavigation()
-//        object HideEpisodeListLoading : UserDetailNavigation()
-//        object ShowEpisodeListLoading : UserDetailNavigation()
+
     }
 
     //endregion

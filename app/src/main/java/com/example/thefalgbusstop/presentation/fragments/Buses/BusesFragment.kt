@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.presentation.Fragments.Buses
+package com.example.thefalgbusstop.presentation.fragments.Buses
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider

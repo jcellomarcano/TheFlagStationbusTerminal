@@ -47,7 +47,7 @@
             android:theme="?attr/actionBarTheme"
             app:menu="@menu/toolbar_menu"
             app:titleTextColor="@color/white"
-            app:title="@{title}"
+            app:title="Terminal la Bandera"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

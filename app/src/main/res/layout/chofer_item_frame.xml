@@ -36,29 +36,60 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
+                        android:contentDescription="profilePic"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <TextView
-                        android:id="@+id/patenteBus"
+                        android:id="@+id/choferNombre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@{chofer.nombreCompleto}"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/grey_text_color"
+                        android:textSize="14sp"
+                        android:text="@{chofer.nombreCompleto, default=Nombre}"
+                        app:layout_constraintBottom_toBottomOf="@+id/hintNombre"
+                        app:layout_constraintStart_toEndOf="@+id/hintNombre"
+                        app:layout_constraintTop_toTopOf="@+id/hintNombre" />
+
+                    <TextView
+                        android:id="@+id/choferRut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey_text_color"
+                        android:textSize="14sp"
+                        android:text="@{chofer.rut, default=Rut}"
+                        app:layout_constraintBottom_toBottomOf="@+id/rutHint"
+                        app:layout_constraintStart_toStartOf="@+id/choferNombre"
+                        app:layout_constraintTop_toTopOf="@+id/rutHint" />
+
+                    <TextView
+                        android:id="@+id/hintNombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="Nombre: "
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/grey_subtitle_color"
+                        app:layout_constraintBottom_toTopOf="@+id/rutHint"
                         app:layout_constraintStart_toEndOf="@+id/profilePic"
                         app:layout_constraintTop_toTopOf="@+id/profilePic" />
 
                     <TextView
-                        android:id="@+id/marcaBus"
+                        android:id="@+id/rutHint"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="@{chofer.rut}"
+                        android:layout_marginStart="24dp"
+                        android:textColor="@color/grey_subtitle_color"
+                        android:text="Rut: "
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/profilePic"
-                        app:layout_constraintStart_toEndOf="@+id/profilePic" />
+                        app:layout_constraintStart_toEndOf="@+id/profilePic"
+                        app:layout_constraintTop_toBottomOf="@+id/hintNombre" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

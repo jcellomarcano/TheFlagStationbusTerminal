@@ -1,4 +1,4 @@
-package com.example.thefalgbusstop.presentation.Fragments.Passengers
+package com.example.thefalgbusstop.presentation.fragments.Passengers
 
 import android.content.Context
 import android.os.Bundle
@@ -25,8 +25,8 @@ import com.example.thefalgbusstop.databinding.PassengersFragmentBinding
 import com.example.thefalgbusstop.domain.GetAllPassengersUseCase
 import com.example.thefalgbusstop.domain.entities.Passenger
 import com.example.thefalgbusstop.presentation.Adapters.RecyclerPassengerAdapter
-import com.example.thefalgbusstop.presentation.Fragments.Buses.AgencyDataSource
-import com.example.thefalgbusstop.presentation.Fragments.Passengers.PassengersViewModel.PassengerListNavigation.*
+import com.example.thefalgbusstop.presentation.fragments.Buses.AgencyDataSource
+import com.example.thefalgbusstop.presentation.fragments.Passengers.PassengersViewModel.PassengerListNavigation.*
 import kotlinx.android.synthetic.main.passengers_fragment.*
 
 

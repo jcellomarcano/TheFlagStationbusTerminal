@@ -77,10 +77,10 @@ class EditItemActivityViewModel(
         misEdit = isEdit
         try {
             if(misEdit){
-                updateChofer!!.id = chofer!!.id
-                updateChofer!!.nombre = string1
-                updateChofer!!.apellido = string2
-                updateChofer!!.rut = string3
+                updateChofer.id = chofer!!.id
+                updateChofer.nombre = string1
+                updateChofer.apellido = string2
+                updateChofer.rut = string3
 
                 Log.i("EDITVM", "onDisplayEditTextConfirm: $string1")
                 Log.i("EDITVM", "onDisplayEditTextConfirm: ${updateChofer.nombre}")

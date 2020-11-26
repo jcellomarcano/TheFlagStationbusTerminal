@@ -1,74 +1,66 @@
-package com.example.thefalgbusstop.presentation.Fragments.Passengers
+package com.example.thefalgbusstop.presentation.fragments.Hours
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.thefalgbusstop.utils.Event
-import com.example.thefalgbusstop.domain.GetAllPassengersUseCase
-import com.example.thefalgbusstop.domain.entities.Passenger
+import com.example.thefalgbusstop.domain.GetAllHorariosUseCase
+import com.example.thefalgbusstop.domain.entities.Horarios
 import io.reactivex.disposables.CompositeDisposable
-import com.example.thefalgbusstop.presentation.Fragments.Passengers.PassengersViewModel.PassengerListNavigation.*
 
-class PassengersViewModel(
-    private  val getAllPassengersUseCase: GetAllPassengersUseCase
+class HoursViewModel(
+    private val getAllHorariosUseCase: GetAllHorariosUseCase
 ) : ViewModel() {
-    // Fields
+
     private val disposable = CompositeDisposable()
 
-    private val _events = MutableLiveData<Event<PassengerListNavigation>>()
-    val events: LiveData<Event<PassengerListNavigation>> get() = _events
+    private val _events = MutableLiveData<Event<HoursListNavigation>>()
+    val events: LiveData<Event<HoursListNavigation>> get() = _events
 
     private var currentPage = 1
     private var isLastPage = false
     private var isLoading = false
-    // end Fields
 
-    //Public Meths
     fun onLoadMoreItems(visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int) {
         if (isLoading || isLastPage || !isInFooter(visibleItemCount, firstVisibleItemPosition, totalItemCount)) {
             return
         }
 
         currentPage += 1
-        onGetAllPassengers()
+        onGetAllHours()
     }
 
-    fun onRetryGetAllPassengers(itemCount: Int) {
+    fun onRetryGetAllHours(itemCount: Int) {
         if (itemCount > 0) {
-            _events.value = Event(HideLoading)
+            _events.value = Event(HoursListNavigation.HideLoading)
             return
         }
 
-        onGetAllPassengers()
+        onGetAllHours()
     }
 
-    fun onGetAllPassengers(){
+    fun onGetAllHours(){
         disposable.add(
-            getAllPassengersUseCase
+            getAllHorariosUseCase
                 .invoke()
                 .doOnSubscribe { showLoading() }
-                .subscribe({ passengerList ->
-                    if (passengerList.size < PAGE_SIZE) {
+                .subscribe({ HoursList ->
+                    if (HoursList.size < PAGE_SIZE) {
                         isLastPage = true
                     }
 
                     hideLoading()
-                    _events.value = Event(ShowPassengerList(
-                        passengerList))
+                    _events.value = Event(HoursListNavigation.ShowHoursList(HoursList))
                 }, { error ->
                     isLastPage = true
                     hideLoading()
-                    _events.value = Event(ShowPassengerError(
-                        error))
+                    _events.value = Event(HoursListNavigation.ShowHoursError(error))
                 })
         )
     }
 
+    //region Private Methods
 
-
-    //end Pub Meths
-
-    // Privt Meth
     private fun isInFooter(
         visibleItemCount: Int,
         firstVisibleItemPosition: Int,
@@ -81,22 +73,24 @@ class PassengersViewModel(
 
     private fun showLoading() {
         isLoading = true
-        _events.value = Event(ShowLoading)
+        _events.value = Event(HoursListNavigation.ShowLoading)
     }
 
     private fun hideLoading() {
         isLoading = false
-        _events.value = Event(HideLoading)
+        _events.value = Event(HoursListNavigation.HideLoading)
     }
 
-    // end Priv Meth
+    //endregion
+
+
 
     //region Inner Classes & Interfaces
-    sealed class PassengerListNavigation {
-        data class ShowPassengerError(val error: Throwable) : PassengerListNavigation()
-        data class ShowPassengerList(val passengerList: List<Passenger>) : PassengerListNavigation()
-        object HideLoading : PassengerListNavigation()
-        object ShowLoading : PassengerListNavigation()
+    sealed class HoursListNavigation {
+        data class ShowHoursError(val error: Throwable) : HoursListNavigation()
+        data class ShowHoursList(val HoursList: List<Horarios>) : HoursListNavigation()
+        object HideLoading : HoursListNavigation()
+        object ShowLoading : HoursListNavigation()
     }
 
     //endregion
@@ -104,9 +98,9 @@ class PassengersViewModel(
     //region Companion Object
 
     companion object {
-
         private const val PAGE_SIZE = 20
     }
 
     //endregion
+
 }

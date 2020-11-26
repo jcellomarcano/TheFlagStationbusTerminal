@@ -5,8 +5,8 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/action_favorite"
-        android:icon="@android:drawable/ic_menu_add"
+        android:id="@+id/add_entity"
+        android:icon="@drawable/ic_add_user"
         android:orderInCategory="300"
         android:title="User"
         app:showAsAction="ifRoom" />
