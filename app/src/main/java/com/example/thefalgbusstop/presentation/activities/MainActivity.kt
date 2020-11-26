@@ -59,6 +59,8 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         Log.i("MAin", "onCreateOptionsMenu: estamos en el menu")
         menuInflater.inflate(R.menu.toolbar_menu, menu)
@@ -83,7 +85,7 @@ class MainActivity : AppCompatActivity(),
 
 
     private fun setUpNavigation(){
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView = binding.bottomNavigationView
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         NavigationUI.setupWithNavController(
@@ -95,11 +97,23 @@ class MainActivity : AppCompatActivity(),
 
     private fun initComponents(){
         title = "Terminal la Bandera App"
+        toolbar.setOnMenuItemClickListener{
+            when(it.itemId){
+                R.id.add_entity -> {
+                    Toast.makeText(this, "clicl en agregar", Toast.LENGTH_SHORT).show()
+                    addEntity()
+                    true
+                } else -> {
+                    super.onOptionsItemSelected(it)
+                }
+            }
+        }
         setUpNavigation()
     }
 
     private fun addEntity(){
         val intent = Intent(this, EditItemActivity::class.java)
+        intent.putExtra("isEdit", false)
         startActivity(intent)
         overridePendingTransition(R.anim.entry, R.anim.exit)
     }

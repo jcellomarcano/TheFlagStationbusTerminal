@@ -28,7 +28,7 @@ class EditItemActivityViewModel(
 
     private var misEdit: Boolean = false
     private var createChofer = ChoferPost("","","")
-    private var updateChofer = ChoferUpdate(chofer!!.id,chofer.nombre,chofer.apellido,chofer.rut)
+    private var updateChofer: ChoferUpdate? = null
     init {
         misEdit = chofer != null
         Log.i("EditVM", "init: $misEdit ")
@@ -56,8 +56,10 @@ class EditItemActivityViewModel(
     //PubMeth
     fun onUserValidation(){
         if (chofer == null && passenger == null){
+            if (chofersUseCase != null){
+                return
+            }
             _events.value = Event(CloseActivity)
-            return
         }
         else if (chofer != null && passenger == null){
             _choferValues.value = chofer
@@ -77,15 +79,15 @@ class EditItemActivityViewModel(
         misEdit = isEdit
         try {
             if(misEdit){
-                updateChofer.id = chofer!!.id
-                updateChofer.nombre = string1
-                updateChofer.apellido = string2
-                updateChofer.rut = string3
+                updateChofer!!.id = chofer!!.id
+                updateChofer!!.nombre = string1
+                updateChofer!!.apellido = string2
+                updateChofer!!.rut = string3
 
                 Log.i("EDITVM", "onDisplayEditTextConfirm: $string1")
-                Log.i("EDITVM", "onDisplayEditTextConfirm: ${updateChofer.nombre}")
-                Log.i("EDITVM", "onDisplayEditTextConfirm: ${updateChofer.apellido}")
-                Log.i("EDITVM", "onDisplayEditTextConfirm: ${updateChofer.rut}")
+                Log.i("EDITVM", "onDisplayEditTextConfirm: ${updateChofer!!.nombre}")
+                Log.i("EDITVM", "onDisplayEditTextConfirm: ${updateChofer!!.apellido}")
+                Log.i("EDITVM", "onDisplayEditTextConfirm: ${updateChofer!!.rut}")
             }else {
                 createChofer.nombre = string1
                 createChofer.apellido = string2
@@ -138,15 +140,18 @@ class EditItemActivityViewModel(
             activity,
             "Enviando"
         )
-        Log.i("EDITVM", "doEditEntity: ${updateChofer.nombre}")
+        Log.i("EDITVM", "doEditEntity: ${updateChofer!!.nombre}")
         if (chofersUseCase != null) {
             disposable.add(
                 chofersUseCase
-                    .invokeUpdate(updateChofer, updateChofer.id!!)
+                    .invokeUpdate(updateChofer!!, updateChofer!!.id!!)
                     .doOnSubscribe { alertDialogLoading.show() }
                     .subscribe({ response ->
                         if (response != null) {
                             alertDialogLoading.hide()
+                            _choferValues.value!!.nombre = updateChofer!!.nombre!!
+                            _choferValues.value!!.apellido = updateChofer!!.apellido!!
+                            _choferValues.value!!.rut = updateChofer!!.rut!!
                             showConfirmPost(activity, response.message)
                         }
                     }, { error ->
@@ -170,9 +175,6 @@ class EditItemActivityViewModel(
         )
         confirmAlertDialog.setConfirmClickListener {
             confirmAlertDialog.dismissWithAnimation()
-            _choferValues.value!!.nombre = updateChofer.nombre!!
-            _choferValues.value!!.apellido = updateChofer.apellido!!
-            _choferValues.value!!.rut = updateChofer.rut!!
             val intent = Intent(activity, MainActivity::class.java).apply {
             }
             activity.startActivity(intent)

@@ -2,6 +2,7 @@ package com.example.thefalgbusstop.presentation.activities
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
@@ -39,7 +40,7 @@ class EditItemActivity : AppCompatActivity() {
 
     //Global Val
     private lateinit var binding: ActivityEditItemBinding
-    private var isEdit: Boolean = false
+    var isEdit: Boolean = true
 
     //Global Chofer
     private val choferRequest: ChoferRequest by lazy {
@@ -90,17 +91,26 @@ class EditItemActivity : AppCompatActivity() {
         //Binding initialization
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_item)
         binding.lifecycleOwner = this@EditItemActivity
-        isEdit = true
+        isEdit = intent.extras!!.getBoolean("isEdit")
+        Log.i("EditActivity", "initComponents: $isEdit")
+        binding.hintString1 = getString(R.string.nameTag)
+        binding.hintString2 = getString(R.string.lastnameTag)
+        binding.hintString3 = getString(R.string.rutTag)
+        binding.editTextNumber.visibility = View.GONE
+        binding.editTextNumber2.visibility = View.GONE
+        binding.editTextNumber3.visibility = View.GONE
         if(isEdit){
             binding.edtTextId.visibility = View.VISIBLE
             binding.spnEntity.visibility = View.GONE
-            binding.imgPage.setImageDrawable(ContextCompat.getDrawable(this@EditItemActivity,
-                R.drawable.ic_edit))
+            editItemActivityViewModel.choferValues.observe(this, Observer(this::loadChofer))
 
         } else {
+            binding.pageTitle.text = "Agregar Chofer"
             binding.edtTextId.visibility = View.GONE
+            binding.spnEntity.visibility = View.VISIBLE
             binding.imgPage.setImageDrawable(ContextCompat.getDrawable(this@EditItemActivity,
-                R.drawable.ic_add_user))
+                R.drawable.ic_edit))
+            setChofer()
         }
         binding.spnEntity.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(
@@ -117,7 +127,6 @@ class EditItemActivity : AppCompatActivity() {
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
-        editItemActivityViewModel.choferValues.observe(this, Observer(this::loadChofer))
         editItemActivityViewModel.events.observe(this, Observer(this::validateEvents))
         editItemActivityViewModel.onUserValidation()
         val adapter = ArrayAdapter.createFromResource(applicationContext,
@@ -126,32 +135,52 @@ class EditItemActivity : AppCompatActivity() {
         binding.spnEntity.adapter = adapter
         btnBack.setOnClickListener { onBackPressed() }
         btnConfirm.setOnClickListener {
-            editItemActivityViewModel.onDisplayEditTextConfirm(this@EditItemActivity,
-                binding.string1.toString(),
-                binding.string2.toString(),
-                binding.string3.toString(),
-            true) }
+            if (validate()){
+                editItemActivityViewModel.onDisplayEditTextConfirm(this@EditItemActivity,
+                    binding.string1.toString(),
+                    binding.string2.toString(),
+                    binding.string3.toString(),
+                    isEdit)
+            }
+        }
 
     }
 
-    private fun loadChofer(chofer: Chofer){
-        if(isEdit){
+    private fun loadChofer(chofer: Chofer?){
+        Log.i("EditVM", "loadChofer: $isEdit")
             binding.pageTitle.text = "Editar Chofer"
-            binding.id = "Id del chofer: ${chofer.id}"
+            binding.id = "Id del chofer: ${chofer!!.id}"
             binding.string1 = chofer.nombre
             binding.string2 = chofer.apellido
             binding.string3 = chofer.rut
+    }
 
-        } else {
-            binding.pageTitle.text = "Agregar Chofer"
-        }
-        binding.hintString1 = getString(R.string.nameTag)
-        binding.hintString2 = getString(R.string.lastnameTag)
-        binding.hintString3 = getString(R.string.rutTag)
-        binding.editTextNumber.visibility = View.GONE
-        binding.editTextNumber2.visibility = View.GONE
-        binding.editTextNumber3.visibility = View.GONE
+    private fun setChofer(){
+        Log.i("EditVM", "setChofer: $isEdit")
+        binding.pageTitle.text = "Agregar Chofer"
 
+    }
+
+    private fun validate(): Boolean{
+       if (edtTextString1 == null){
+           edtTextString1.error = "Campo vacío"
+           return false
+       } else {
+           edtTextString1.error = null
+       }
+        if (editTextString2 == null){
+            editTextString2.error = "Campo vacío"
+           return false
+       } else {
+            editTextString2.error = null
+       }
+        if (edtTextString3 == null){
+            edtTextString3.error = "Campo vacío"
+           return false
+       } else {
+            edtTextString3.error = null
+       }
+        return true
     }
 
     private fun validateEvents(event: Event<UserEditNavigation>){

@@ -88,6 +88,7 @@ class ItemDetailActivityViewModel(
     fun openEditChofer(activity: Activity) {
         activity.startActivity<EditItemActivity> {
             putExtra(Cosntants.EXTRA_CHOFER, chofer?.toChoferParcelable())
+            putExtra("isEdit", true)
         }
         activity.overridePendingTransition(R.anim.entry, R.anim.exit)
     }
